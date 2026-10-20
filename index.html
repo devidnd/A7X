@@ -1104,6 +1104,7 @@ svg { display: block; }
     align-items: center;
     gap: 11px;
     min-width: 0;
+    text-align: left;
 }
 
 .music-album-art {
@@ -1861,7 +1862,7 @@ svg { display: block; }
         <div class="music-widget">
             <div class="music-info">
                 <img id="musicAlbumArt" src="" alt="Album Art" class="music-album-art" hidden>
-                <div class="music-text text-left">
+                <div class="music-text">
                     <div id="musicTitle" class="music-title">Memuat Lagu...</div>
                     <div id="musicArtist" class="music-artist">Avenged Sevenfold</div>
                 </div>
@@ -1899,6 +1900,7 @@ svg { display: block; }
 const $ = id => document.getElementById(id);
 const formatNumber = value => Number(value).toLocaleString("id-ID");
 const rupiah = value => "Rp " + formatNumber(value);
+const cleanPhone = value => String(value || "").replace(/\D/g, "");
 
 let config = null;
 let calculatedTotal = 0;
@@ -2018,7 +2020,7 @@ function safeImageUrl(value) {
     try {
         const url = new URL(value, document.baseURI);
 
-        if (!["http:", "https:"].includes(url.protocol)) return "";
+        if (!["http:", "https:", "data:", "blob:", "file:"].includes(url.protocol)) return "";
 
         return url.href;
     } catch {
@@ -2080,7 +2082,7 @@ function setupAudioPlayer() {
         artImg.hidden = false;
     }
 
-    toggleBtn.addEventListener("click", () => {
+    toggleBtn.onclick = () => {
         if (audio.paused) {
             audio.play().then(() => {
                 playIcon.hidden = true;
@@ -2095,7 +2097,7 @@ function setupAudioPlayer() {
             pauseIcon.hidden = true;
             showToast("Musik dijeda.");
         }
-    });
+    };
 }
 
 function renderConfig() {
