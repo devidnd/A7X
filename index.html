@@ -626,79 +626,11 @@ svg { display: block; }
     box-shadow: var(--shadow);
 }
 
-.recipient {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--border);
-}
-
-.recipient-avatar {
-    display: grid;
-    place-items: center;
-    width: 58px;
-    height: 58px;
-    border-radius: 18px;
-    background: linear-gradient(145deg,#33141E,#1D0D13);
-    border: 1px solid var(--crimson-300);
-    color: var(--gold);
-    flex-shrink: 0;
-}
-
-.recipient-avatar svg { width: 28px; height: 28px; }
-
-.recipient-content { min-width: 0; }
-
-.eyebrow {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: var(--gold);
-}
-
-.recipient h2 {
-    font-family: "Cinzel",serif;
-    font-size: 18px;
-    font-weight: 800;
-    margin: 4px 0;
-}
-
-.recipient p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.name-pill {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 7px;
-    margin-top: 10px;
-    padding: 7px 12px;
-    background: var(--crimson-50);
-    border: 1px solid var(--crimson-200);
-    border-radius: 10px;
-    font-size: 11px;
-    color: var(--muted);
-}
-
-.name-pill strong {
-    font-family: "JetBrains Mono",monospace;
-    color: var(--gold);
-    font-size: 11.5px;
-    overflow-wrap: anywhere;
-}
-
 .notice {
     display: flex;
     align-items: flex-start;
     gap: 13px;
     padding: 16px;
-    margin-top: 20px;
     border-radius: 18px;
     background: linear-gradient(135deg,#241118,#190E13);
     border: 1px solid var(--crimson-200);
@@ -747,7 +679,7 @@ svg { display: block; }
     align-items: flex-end;
     justify-content: space-between;
     gap: 10px;
-    margin: 26px 0 14px;
+    margin: 24px 0 14px;
 }
 
 .section-head h3 {
@@ -1153,6 +1085,82 @@ svg { display: block; }
 
 .whatsapp-button svg { width: 17px; height: 17px; }
 
+/* Musik Player Widget */
+.music-widget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border: 1px solid var(--crimson-300);
+    border-radius: 16px;
+    background: rgba(28, 17, 23, 0.85);
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.music-album-art {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--gold);
+    flex-shrink: 0;
+    background: #110C10;
+}
+
+.music-text {
+    min-width: 0;
+}
+
+.music-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-artist {
+    font-size: 10.5px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 1px;
+}
+
+.music-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #F87171;
+    background: linear-gradient(135deg, #DC2626, #991B1B);
+    color: white;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(220,38,38,.4);
+    transition: transform .2s, background .2s;
+}
+
+.music-btn:hover {
+    transform: scale(1.06);
+}
+
+.music-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
 .footer {
     padding: 24px 0 30px;
     text-align: center;
@@ -1167,6 +1175,15 @@ svg { display: block; }
     font-family: "Cinzel",serif;
     color: var(--gold);
     font-size: 13px;
+}
+
+.tribute-text {
+    font-size: 10.5px;
+    color: #D4AF37;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 6px;
 }
 
 .toast {
@@ -1315,19 +1332,6 @@ svg { display: block; }
         padding: 20px 15px;
         border-radius: 22px;
     }
-
-    .recipient {
-        align-items: flex-start;
-        gap: 11px;
-    }
-
-    .recipient-avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 15px;
-    }
-
-    .recipient h2 { font-size: 15px; }
 
     .qris-trigger {
         padding: 13px;
@@ -1692,24 +1696,6 @@ svg { display: block; }
             Informasi pembayaran belum dapat dimuat. Pastikan data.json tersedia dan telah diisi.
         </div>
 
-        <div class="recipient">
-            <div class="recipient-avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                </svg>
-            </div>
-            <div class="recipient-content">
-                <div class="eyebrow">Informasi Penerima</div>
-                <h2>Pembayaran Resmi</h2>
-                <p id="description">Memuat informasi pembayaran...</p>
-                <div class="name-pill">
-                    <span>a.n.</span>
-                    <strong id="ownerName">Memuat...</strong>
-                </div>
-            </div>
-        </div>
-
         <div class="notice">
             <div class="notice-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1868,8 +1854,31 @@ svg { display: block; }
     </main>
 
     <footer class="footer">
-        <strong>Portal Pembayaran</strong>
-        Pastikan inisial penerima dan nominal pembayaran sudah sesuai sebelum menyelesaikan transaksi.
+        <strong class="store-name-text">DND Store</strong>
+        Pastikan nominal pembayaran sudah sesuai sebelum menyelesaikan transaksi.
+
+        <!-- Musik Player Widget -->
+        <div class="music-widget">
+            <div class="music-info">
+                <img id="musicAlbumArt" src="" alt="Album Art" class="music-album-art" hidden>
+                <div class="music-text text-left">
+                    <div id="musicTitle" class="music-title">Memuat Lagu...</div>
+                    <div id="musicArtist" class="music-artist">Avenged Sevenfold</div>
+                </div>
+            </div>
+            <button type="button" class="music-btn" id="musicToggleBtn" aria-label="Putar / Jeda Musik">
+                <svg id="musicPlayIcon" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg id="musicPauseIcon" viewBox="0 0 24 24" fill="currentColor" hidden>
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+            </button>
+        </div>
+        <audio id="bgAudio" loop></audio>
+
+        <div class="tribute-text">Tribute to Avenged Sevenfold</div>
         <div>© <span id="footerYear"></span> All Rights Reserved.</div>
     </footer>
 
@@ -1896,27 +1905,6 @@ let calculatedTotal = 0;
 let qrisReady = false;
 let toastTimer = null;
 let lastModalFocus = null;
-
-function maskName(name) {
-    const clean = String(name || "").trim();
-
-    if (!clean) return "Belum tersedia";
-
-    return clean.split(/\s+/).map(word => {
-        if (word.includes("*")) return word;
-
-        const chars = Array.from(word);
-
-        if (chars.length <= 1) return word.toUpperCase();
-
-        return chars[0].toLocaleUpperCase("id-ID") +
-            "*".repeat(chars.length - 1);
-    }).join(" ");
-}
-
-function cleanPhone(value) {
-    return String(value || "").replace(/\D/g, "");
-}
 
 function showToast(message) {
     $("toastText").textContent = message;
@@ -2071,6 +2059,45 @@ function renderQris() {
     image.src = source;
 }
 
+function setupAudioPlayer() {
+    const audio = $("bgAudio");
+    const toggleBtn = $("musicToggleBtn");
+    const playIcon = $("musicPlayIcon");
+    const pauseIcon = $("musicPauseIcon");
+
+    if (!config || !config.audioUrl) {
+        audio.src = "";
+        return;
+    }
+
+    audio.src = config.audioUrl;
+    $("musicTitle").textContent = config.songTitle || "Victim";
+    $("musicArtist").textContent = config.songArtist || "Avenged Sevenfold";
+
+    if (config.albumArt) {
+        const artImg = $("musicAlbumArt");
+        artImg.src = config.albumArt;
+        artImg.hidden = false;
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play().then(() => {
+                playIcon.hidden = true;
+                pauseIcon.hidden = false;
+                showToast("Memutar lagu: " + (config.songTitle || "Victim"));
+            }).catch(() => {
+                showToast("Gagal memutar audio otomatis.");
+            });
+        } else {
+            audio.pause();
+            playIcon.hidden = false;
+            pauseIcon.hidden = true;
+            showToast("Musik dijeda.");
+        }
+    });
+}
+
 function renderConfig() {
     if (!config) return;
 
@@ -2080,17 +2107,13 @@ function renderConfig() {
         element.textContent = storeName;
     });
 
-    $("ownerName").textContent = maskName(config.namaPenerima);
-
-    $("description").textContent = config.deskripsi ||
-        "Silakan pilih metode pembayaran dan pastikan inisial nama penerima sudah sesuai sebelum menyelesaikan transaksi.";
-
     $("feeThresholdText").textContent = rupiah(config.batasBiaya);
     $("feePercentText").textContent = config.persenBiaya + "%";
 
     $("confirmButton").disabled = !cleanPhone(config.whatsapp);
 
     renderQris();
+    setupAudioPlayer();
 
     const amount = Number($("amountInput").value.replace(/\D/g, "")) || 0;
     updateCalculation(amount);
@@ -2109,10 +2132,12 @@ async function loadData() {
 
         config = {
             namaToko: String(data.namaToko || "DND Store"),
-            namaPenerima: String(data.namaPenerima || ""),
-            deskripsi: String(data.deskripsi || ""),
             whatsapp: String(data.whatsapp || ""),
             qrisImage: String(data.qrisImage || ""),
+            songTitle: String(data.songTitle || "Victim"),
+            songArtist: String(data.songArtist || "Avenged Sevenfold"),
+            audioUrl: String(data.audioUrl || ""),
+            albumArt: String(data.albumArt || ""),
             batasBiaya: Number.isFinite(validThreshold) && validThreshold >= 0
                 ? validThreshold : 499000,
             persenBiaya: Number.isFinite(validPercent) && validPercent >= 0
@@ -2123,8 +2148,6 @@ async function loadData() {
 
     } catch {
         $("errorBanner").hidden = false;
-        $("ownerName").textContent = "Belum tersedia";
-        $("description").textContent = "Informasi pembayaran belum dapat dimuat.";
         setQrisUnavailable();
         showToast("Gagal memuat informasi pembayaran.");
     }
