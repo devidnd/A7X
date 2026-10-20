@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B090C">
+<title>DND Store — Portal Pembayaran Resmi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=JetBrains+Mono:wght@500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --crimson-50: #241016;
+    --crimson-100: #36151F;
+    --crimson-200: #521C2B;
+    --crimson-300: #7F2239;
+    --crimson-400: #B91C1C;
+    --crimson-500: #DC2626;
+    --crimson-600: #991B1B;
+    --gold: #D4AF37;
+    --ink: #F5F0F2;
+    --muted: #A6959C;
+    --panel: #141116;
+    --panel-soft: #1B161E;
+    --border: #33222A;
+    --shadow: 0 22px 55px rgba(0,0,0,.65);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background: radial-gradient(circle at 50% 0%,#2B0C14 0%,#110B10 48%,#08070A 100%);
+    font-family: "Poppins",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+body.modal-open { overflow: hidden; }
+
+button,input { font: inherit; }
+
+button { cursor: pointer; }
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .45;
+    transform: none !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--crimson-500);
+    outline-offset: 3px;
+}
+
+[hidden] { display: none !important; }
+
+svg { display: block; }
+
+.container {
+    position: relative;
+    z-index: 5;
+    width: min(100% - 32px,740px);
+    margin-inline: auto;
+}
+
+.sakura-sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sakura-petal {
+    position: absolute;
+    top: -50px;
+    pointer-events: none;
+    will-change: transform;
+    animation: petalFall linear infinite;
+}
+
+.sakura-petal svg {
+    width: 100%;
+    height: 100%;
+    animation: petalRotate ease-in-out infinite alternate;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translate3d(0,-10vh,0) rotate(0);
+        opacity: 0;
+    }
+    12% { opacity: .9; }
+    88% { opacity: .85; }
+    100% {
+        transform: translate3d(var(--drift),112vh,0) rotate(var(--rotation));
+        opacity: 0;
+    }
+}
+
+@keyframes petalRotate {
+    from { transform: translateX(-14px) rotate(-25deg); }
+    to { transform: translateX(14px) rotate(25deg); }
+}
+
+.page-view {
+    animation: pageEnter .55s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes pageEnter {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-screen {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 0 32px;
+}
+
+.welcome-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 32px 25px;
+    border: 1.5px solid #47202B;
+    border-radius: 30px;
+    text-align: center;
+    background: linear-gradient(165deg,rgba(24,18,26,.96) 0%,rgba(16,12,18,.98) 65%,rgba(32,12,18,.96) 100%);
+    box-shadow: var(--shadow),0 0 40px rgba(185,28,28,.12);
+}
+
+.welcome-card::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle,rgba(220,38,38,.22),transparent 70%);
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.store-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #1D1318;
+    border: 1px solid #59222F;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.45);
+}
+
+.store-badge svg {
+    width: 14px;
+    height: 14px;
+    color: var(--crimson-500);
+}
+
+.sakura-stage {
+    position: relative;
+    width: min(100%,480px);
+    height: 355px;
+    margin: 10px auto 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.stage-illustration {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.blood-moon {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: moonPulse 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes moonPulse {
+    0% { transform: scale(.98); opacity: .9; }
+    100% { transform: scale(1.03); opacity: 1; }
+}
+
+.deathbat-emblem {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: batHover 3.2s ease-in-out infinite;
+}
+
+@keyframes batHover {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.bat-wing-left {
+    transform-box: fill-box;
+    transform-origin: right center;
+    animation: wingLeftFlap 1.8s ease-in-out infinite alternate;
+}
+
+.bat-wing-right {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: wingRightFlap 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes wingLeftFlap {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(8deg); }
+}
+
+@keyframes wingRightFlap {
+    0% { transform: rotate(5deg); }
+    100% { transform: rotate(-8deg); }
+}
+
+.tree-branch {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: branchWind 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes branchWind {
+    from { transform: rotate(-1.8deg); }
+    to { transform: rotate(1.8deg); }
+}
+
+.chibi-girl-group {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: chibiFloat 3.4s ease-in-out infinite;
+}
+
+.chibi-boy-group {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: chibiFloat 3.4s ease-in-out -1.7s infinite;
+}
+
+@keyframes chibiFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.girl-head {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: girlHeadTilt 3.4s ease-in-out infinite alternate;
+}
+
+.boy-head {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: boyHeadTilt 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes girlHeadTilt {
+    0% { transform: rotate(-2.5deg); }
+    100% { transform: rotate(3deg); }
+}
+
+@keyframes boyHeadTilt {
+    0% { transform: rotate(2.5deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+.girl-wave-arm {
+    transform-box: fill-box;
+    transform-origin: 82% 84%;
+    animation: girlWave 1.2s ease-in-out infinite alternate;
+}
+
+.boy-wave-arm {
+    transform-box: fill-box;
+    transform-origin: 18% 84%;
+    animation: boyWave 1.05s ease-in-out infinite alternate;
+}
+
+@keyframes girlWave {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(18deg); }
+}
+
+@keyframes boyWave {
+    0% { transform: rotate(-15deg); }
+    100% { transform: rotate(22deg); }
+}
+
+.anime-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: eyeBlink 4.6s infinite;
+}
+
+@keyframes eyeBlink {
+    0%,44%,48%,100% { transform: scaleY(1); }
+    46% { transform: scaleY(.08); }
+}
+
+.flame-pop {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: flameRise 2.4s ease-in-out infinite;
+}
+
+.flame-pop.delay {
+    animation-delay: -1.2s;
+}
+
+@keyframes flameRise {
+    0%,100% { transform: translateY(0) scale(.92); opacity: .8; }
+    50% { transform: translateY(-8px) scale(1.12); opacity: 1; }
+}
+
+.speech-hai {
+    position: absolute;
+    top: 66px;
+    right: 22px;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1.5px solid var(--crimson-500);
+    border-radius: 18px 18px 18px 4px;
+    background: #1C1217;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    box-shadow: 0 8px 22px rgba(220,38,38,.28);
+    animation: speechFloat 2.8s ease-in-out infinite;
+}
+
+.speech-hai svg {
+    width: 15px;
+    height: 15px;
+    color: var(--gold);
+}
+
+@keyframes speechFloat {
+    0%,100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-6px) rotate(3deg); }
+}
+
+.welcome-title {
+    font-family: "Cinzel",serif;
+    font-size: clamp(24px,5vw,35px);
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: .5px;
+    margin: 12px 0 8px;
+    color: var(--ink);
+    text-shadow: 0 4px 18px rgba(220,38,38,.35);
+}
+
+.welcome-title span {
+    color: var(--crimson-500);
+}
+
+.welcome-desc {
+    max-width: 440px;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.welcome-steps {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    max-width: 490px;
+    margin: 22px auto;
+}
+
+.welcome-step {
+    padding: 12px 8px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(28,21,30,.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.welcome-step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--crimson-100);
+    border: 1px solid var(--crimson-300);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+}
+
+.welcome-step-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.enter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: min(100%,320px);
+    padding: 15px 24px;
+    border: 1px solid #F87171;
+    border-radius: 16px;
+    background: linear-gradient(135deg,#DC2626 0%,#991B1B 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    box-shadow: 0 10px 26px rgba(220,38,38,.35);
+    transition: transform .2s,box-shadow .2s;
+}
+
+.enter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(220,38,38,.5);
+}
+
+.enter-btn svg { width: 18px; height: 18px; }
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 22px 0 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg,#DC2626,#7F1D1D);
+    border: 1px solid #F87171;
+    color: white;
+    box-shadow: 0 6px 18px rgba(220,38,38,.3);
+}
+
+.brand-name {
+    display: block;
+    font-family: "Cinzel",serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.brand-subtitle {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--panel-soft);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 700;
+    transition: border .2s,background .2s;
+}
+
+.back-btn:hover {
+    border-color: var(--crimson-400);
+    background: var(--crimson-50);
+}
+
+.back-btn svg { width: 15px; height: 15px; }
+
+.main-card {
+    background: rgba(20,16,23,.95);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid var(--border);
+    border-radius: 28px;
+    padding: 26px;
+    box-shadow: var(--shadow);
+}
+
+.recipient {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.recipient-avatar {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: linear-gradient(145deg,#33141E,#1D0D13);
+    border: 1px solid var(--crimson-300);
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.recipient-avatar svg { width: 28px; height: 28px; }
+
+.recipient-content { min-width: 0; }
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.recipient h2 {
+    font-family: "Cinzel",serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 4px 0;
+}
+
+.recipient p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.name-pill {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    padding: 7px 12px;
+    background: var(--crimson-50);
+    border: 1px solid var(--crimson-200);
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.name-pill strong {
+    font-family: "JetBrains Mono",monospace;
+    color: var(--gold);
+    font-size: 11.5px;
+    overflow-wrap: anywhere;
+}
+
+.notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 16px;
+    margin-top: 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg,#241118,#190E13);
+    border: 1px solid var(--crimson-200);
+}
+
+.notice-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid var(--crimson-300);
+    background: #140B0F;
+    color: var(--crimson-500);
+    display: grid;
+    place-items: center;
+}
+
+.notice-icon svg { width: 20px; height: 20px; }
+
+.notice h3 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.notice p {
+    margin: 0;
+    font-size: 11.5px;
+    line-height: 1.8;
+    color: #D4C5CB;
+}
+
+.notice button {
+    padding: 0;
+    background: none;
+    border: none;
+    color: #F87171;
+    font-size: inherit;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 26px 0 14px;
+}
+
+.section-head h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.section-head p {
+    margin: 5px 0 0;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.section-tag {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 9px;
+    border: 1px solid var(--crimson-200);
+    background: var(--crimson-50);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.method-list {
+    display: grid;
+    gap: 12px;
+}
+
+.method-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel-soft);
+    transition: transform .2s,border .2s,box-shadow .2s;
+}
+
+.method-card:hover {
+    border-color: var(--crimson-400);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.45);
+}
+
+.method-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 84px;
+    height: 52px;
+    padding: 6px 10px;
+    border-radius: 13px;
+}
+
+.method-logo.dana { background: #118EEA; }
+.method-logo.gopay { background: #00AED6; }
+.method-logo.shopeepay { background: #EE4D2D; }
+
+.method-logo.qris {
+    background: #FFFFFF;
+    border: 1px solid #4A2532;
+}
+
+.method-detail {
+    flex: 1;
+    min-width: 0;
+}
+
+.method-detail strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.method-detail p {
+    margin: 4px 0 0;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.copy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding: 11px 15px;
+    border: 1px solid #EF4444;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#DC2626,#991B1B);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    transition: background .2s,transform .2s;
+}
+
+.copy-button:hover:not(:disabled) {
+    background: linear-gradient(135deg,#EF4444,#B91C1C);
+    transform: translateY(-2px);
+}
+
+.copy-button.success {
+    background: #15803D;
+    border-color: #22C55E;
+}
+
+.copy-button svg { width: 15px; height: 15px; }
+
+.qris-card {
+    margin-top: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--panel-soft);
+    overflow: hidden;
+    scroll-margin-top: 16px;
+}
+
+.qris-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    color: var(--ink);
+}
+
+.qris-trigger .method-detail strong {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.recommended {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--crimson-100);
+    border: 1px solid var(--crimson-300);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.chevron-box {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #120E14;
+    color: var(--gold);
+}
+
+.chevron-box svg {
+    width: 16px;
+    height: 16px;
+    transition: transform .3s;
+}
+
+.qris-card.active .chevron-box svg {
+    transform: rotate(180deg);
+}
+
+.qris-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows .35s ease,opacity .3s ease;
+}
+
+.qris-card.active .qris-content {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.qris-content-inner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.qris-body {
+    padding: 20px;
+    background: #120E14;
+    border-top: 1px solid var(--border);
+}
+
+.fee-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px;
+    background: var(--panel-soft);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    font-size: 11px;
+    line-height: 1.8;
+    color: #D4C5CB;
+}
+
+.fee-info svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--gold);
+}
+
+.fee-info strong { color: #F87171; }
+
+.calculator {
+    margin-top: 16px;
+    padding: 18px;
+    background: var(--panel-soft);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.calculator-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.calculator-heading h4 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.fee-badge {
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(21,128,61,.2);
+    border: 1px solid rgba(34,197,94,.35);
+    color: #4ADE80;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.fee-badge.applied {
+    background: var(--crimson-100);
+    border-color: var(--crimson-300);
+    color: var(--gold);
+}
+
+.amount-input {
+    position: relative;
+    margin-top: 13px;
+}
+
+.amount-input span {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-family: "JetBrains Mono",monospace;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.amount-input input {
+    display: block;
+    width: 100%;
+    padding: 13px 13px 13px 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #100C12;
+    color: var(--ink);
+    font-family: "JetBrains Mono",monospace;
+    font-size: 13px;
+    font-weight: 700;
+    outline: none;
+}
+
+.amount-input input:focus {
+    border-color: var(--crimson-500);
+    background: #0B080C;
+}
+
+.amount-input input::placeholder {
+    font-family: "Poppins",sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #75636B;
+}
+
+.preset-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.preset-list button {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #120E14;
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.preset-list button:hover {
+    border-color: var(--crimson-400);
+    background: var(--crimson-50);
+}
+
+.calculation {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.calc-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 11px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.calc-line strong {
+    font-family: "JetBrains Mono",monospace;
+    font-size: 11px;
+    text-align: right;
+    color: var(--ink);
+}
+
+.calc-line.total {
+    margin: 14px 0 0;
+    padding-top: 13px;
+    border-top: 1px dashed var(--crimson-300);
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.calc-line.total strong {
+    color: var(--gold);
+    font-size: 15px;
+}
+
+.soft-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--crimson-300);
+    border-radius: 12px;
+    background: var(--crimson-50);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 700;
+    transition: background .2s,border .2s;
+}
+
+.soft-button:hover:not(:disabled) {
+    background: var(--crimson-100);
+    border-color: var(--crimson-400);
+}
+
+.soft-button svg { width: 15px; height: 15px; }
+.calculator .soft-button { margin-top: 15px; }
+
+.qris-display {
+    margin-top: 16px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel-soft);
+    text-align: center;
+}
+
+.qris-display h4 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.qris-display > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.qris-image-box {
+    width: min(100%,380px);
+    margin: 17px auto;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    background: white;
+    overflow: hidden;
+}
+
+.qris-image-box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.qris-unavailable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 44px 20px;
+    background: #140F16;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.qris-unavailable svg {
+    width: 36px;
+    height: 36px;
+    color: var(--crimson-400);
+}
+
+.qris-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    max-width: 380px;
+    margin: auto;
+}
+
+.confirm-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 22px;
+    padding: 21px;
+    border: 1px solid var(--crimson-300);
+    border-radius: 18px;
+    background: linear-gradient(135deg,#241118,#160D12);
+}
+
+.confirm-card h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.confirm-card p {
+    margin: 0;
+    color: #D4C5CB;
+    font-size: 11.5px;
+    line-height: 1.8;
+}
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #F87171;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#DC2626,#991B1B);
+    color: white;
+    font-size: 12.5px;
+    font-weight: 700;
+    box-shadow: 0 7px 20px rgba(220,38,38,.3);
+    transition: background .2s,transform .2s;
+}
+
+.whatsapp-button:hover:not(:disabled) {
+    background: linear-gradient(135deg,#EF4444,#B91C1C);
+    transform: translateY(-2px);
+}
+
+.whatsapp-button svg { width: 17px; height: 17px; }
+
+.footer {
+    padding: 24px 0 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+.footer strong {
+    display: block;
+    margin-bottom: 3px;
+    font-family: "Cinzel",serif;
+    color: var(--gold);
+    font-size: 13px;
+}
+
+.toast {
+    position: fixed;
+    z-index: 100;
+    top: 22px;
+    left: 50%;
+    transform: translate(-50%,-20px);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: max-content;
+    max-width: calc(100vw - 28px);
+    padding: 12px 17px;
+    border-radius: 14px;
+    border: 1px solid var(--crimson-400);
+    background: #1A1116;
+    color: white;
+    box-shadow: 0 12px 35px rgba(0,0,0,.65);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.7;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s,transform .3s;
+}
+
+.toast.active {
+    opacity: 1;
+    transform: translate(-50%,0);
+}
+
+.toast svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--gold);
+}
+
+.error-banner {
+    margin-bottom: 16px;
+    padding: 13px;
+    border: 1px solid var(--crimson-400);
+    border-radius: 12px;
+    background: #281118;
+    color: #FCA5A5;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(8,6,10,.85);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    position: relative;
+    width: min(100%,540px);
+    max-height: 90vh;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid var(--crimson-300);
+    background: #161118;
+}
+
+.modal-content img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 76vh;
+    object-fit: contain;
+    border-radius: 12px;
+    background: white;
+}
+
+.modal-close {
+    position: absolute;
+    top: 26px;
+    right: 26px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--crimson-400);
+    border-radius: 50%;
+    background: rgba(22,14,20,.92);
+    color: white;
+}
+
+.modal-close svg { width: 17px; height: 17px; }
+
+@media (max-width:590px) {
+    .container {
+        width: min(100% - 24px,740px);
+    }
+
+    .welcome-card {
+        padding: 26px 16px;
+        border-radius: 26px;
+    }
+
+    .sakura-stage {
+        width: 100%;
+        height: 290px;
+        margin: 10px auto 6px;
+    }
+
+    .speech-hai {
+        right: 8px;
+        top: 46px;
+        padding: 5px 11px;
+        font-size: 11.5px;
+    }
+
+    .welcome-title { font-size: 24px; }
+    .welcome-desc { font-size: 11.5px; }
+
+    .welcome-steps { gap: 7px; }
+
+    .welcome-step {
+        padding: 11px 4px;
+        border-radius: 13px;
+    }
+
+    .welcome-step-text { font-size: 9px; }
+
+    .main-card {
+        padding: 20px 15px;
+        border-radius: 22px;
+    }
+
+    .recipient {
+        align-items: flex-start;
+        gap: 11px;
+    }
+
+    .recipient-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+    }
+
+    .recipient h2 { font-size: 15px; }
+
+    .method-card,
+    .qris-trigger {
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .method-logo {
+        width: 65px;
+        height: 47px;
+        padding: 5px;
+    }
+
+    .method-detail strong { font-size: 12px; }
+    .method-detail p { font-size: 10px; }
+
+    .copy-button {
+        padding: 10px 9px;
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    .copy-button svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .recommended { font-size: 9px; }
+
+    .qris-body { padding: 12px; }
+
+    .calculator,
+    .qris-display { padding: 14px; }
+
+    .calc-line.total strong { font-size: 13px; }
+
+    .qris-actions { gap: 7px; }
+    .qris-actions .soft-button { font-size: 10px; }
+}
+
+@media (max-width:360px) {
+    .copy-button span { display: none; }
+    .method-logo { width: 58px; }
+    .section-tag { display: none; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="sakura-sky" id="sakuraSky" aria-hidden="true"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="m8 12 3 3 5-6"/>
+    </svg>
+    <span id="toastText"></span>
+</div>
+
+<section class="container welcome-screen page-view" id="welcomePage">
+    <div class="welcome-card">
+
+        <div class="store-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.8 8.5L22 9.3L16.5 14L18.2 21L12 17.3L5.8 21L7.5 14L2 9.3L9.2 8.5L12 2Z"/>
+            </svg>
+            OFFICIAL PAYMENT PORTAL
+        </div>
+
+        <div class="sakura-stage" aria-hidden="true">
+
+            <div class="speech-hai">
+                <span>Rock On!</span>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13 2L4 14h7l-2 8 11-12h-7l2-8z"/>
+                </svg>
+            </div>
+
+            <svg class="stage-illustration" viewBox="0 0 480 350" fill="none">
+                <ellipse cx="240" cy="332" rx="195" ry="15" fill="#2A0F18" opacity=".85"/>
+                <ellipse cx="245" cy="332" rx="135" ry="9" fill="#521625" opacity=".6"/>
+
+                <g class="blood-moon">
+                    <circle cx="245" cy="112" r="88" fill="#7F1D1D" opacity=".28"/>
+                    <circle cx="245" cy="112" r="68" fill="#B91C1C" opacity=".85"/>
+                    <circle cx="245" cy="112" r="60" fill="#DC2626"/>
+                    <circle cx="222" cy="92" r="12" fill="#991B1B" opacity=".55"/>
+                    <circle cx="268" cy="126" r="16" fill="#991B1B" opacity=".45"/>
+                    <circle cx="235" cy="138" r="8" fill="#991B1B" opacity=".5"/>
+                </g>
+
+                <g class="tree-trunk">
+                    <path d="M74 328C72 275 78 232 92 184C104 142 122 108 152 78" stroke="#1E1419" stroke-width="20" stroke-linecap="round"/>
+                    <path d="M88 228C118 196 154 174 202 162" stroke="#1E1419" stroke-width="11" stroke-linecap="round"/>
+                    <path d="M106 155C88 130 64 112 36 104" stroke="#1E1419" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M136 96C164 70 202 54 246 48" stroke="#1E1419" stroke-width="8" stroke-linecap="round"/>
+                </g>
+
+                <g class="tree-branch">
+                    <path d="M188 164C236 150 282 146 336 154" stroke="#1E1419" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M58 122C42 112 28 96 22 78" stroke="#1E1419" stroke-width="5" stroke-linecap="round"/>
+                </g>
+
+                <g class="deathbat-emblem">
+                    <g class="bat-wing-left">
+                        <path d="M218 96C186 64 134 52 84 68C108 82 122 98 118 116C144 104 166 108 176 122C192 110 206 108 218 112Z" fill="#181217" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M196 92C168 76 134 74 106 82" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round"/>
+                    </g>
+
+                    <g class="bat-wing-right">
+                        <path d="M272 96C304 64 356 52 406 68C382 82 368 98 372 116C346 104 324 108 314 122C298 110 284 108 272 112Z" fill="#181217" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M294 92C322 76 356 74 384 82" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round"/>
+                    </g>
+
+                    <path d="M225 88C225 72 234 63 245 63C256 63 265 72 265 88C265 98 260 105 256 110L254 122H236L234 110C230 105 225 98 225 88Z" fill="#F3ECEF" stroke="#24161D" stroke-width="2.2"/>
+                    <circle cx="237" cy="90" r="5.5" fill="#DC2626"/>
+                    <circle cx="253" cy="90" r="5.5" fill="#DC2626"/>
+                    <circle cx="237" cy="90" r="2" fill="#FEF08A"/>
+                    <circle cx="253" cy="90" r="2" fill="#FEF08A"/>
+                    <path d="M245 97L242 104H248L245 97Z" fill="#24161D"/>
+                    <path d="M239 114V121M245 114V121M251 114V121" stroke="#24161D" stroke-width="2" stroke-linecap="round"/>
+                </g>
+
+                <g class="flame-pop">
+                    <path d="M56 322C46 310 48 292 58 278C62 290 70 294 66 310C64 317 60 321 56 322Z" fill="#DC2626"/>
+                    <path d="M57 320C52 312 53 300 59 292C62 300 65 304 62 314Z" fill="#F59E0B"/>
+                </g>
+
+                <g class="flame-pop delay">
+                    <path d="M426 318C416 306 418 288 428 274C432 286 440 290 436 306C434 313 430 317 426 318Z" fill="#DC2626"/>
+                    <path d="M427 316C422 308 423 296 429 288C432 296 435 300 432 310Z" fill="#F59E0B"/>
+                </g>
+
+                <g class="chibi-girl-group">
+                    <ellipse cx="182" cy="331" rx="34" ry="6" fill="#090608" opacity=".7"/>
+
+                    <path d="M140 198C128 228 128 268 142 290C158 298 206 298 222 290C236 268 236 228 224 198Z" fill="#1C151B"/>
+
+                    <g class="girl-wave-arm">
+                        <path d="M154 246C138 234 126 216 122 198" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="121" cy="195" r="7" fill="#FFE4D9"/>
+                    </g>
+
+                    <path d="M210 248C220 260 223 274 218 286" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+
+                    <rect x="164" y="292" width="12" height="32" rx="6" fill="#261C22"/>
+                    <rect x="188" y="292" width="12" height="32" rx="6" fill="#261C22"/>
+                    <rect x="158" y="317" width="20" height="11" rx="5.5" fill="#0F0B0D"/>
+                    <rect x="186" y="317" width="20" height="11" rx="5.5" fill="#0F0B0D"/>
+
+                    <path d="M154 242C160 232 204 232 210 242L222 302H142L154 242Z" fill="#1F171E"/>
+                    <path d="M166 240H198L204 302H160L166 240Z" fill="#991B1B"/>
+                    <path d="M172 246L192 260M192 246L172 260M170 268L194 282M194 268L170 282" stroke="#181115" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M140 302Q182 310 224 302" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+
+                    <rect x="175" y="226" width="14" height="15" rx="6" fill="#FFE4D9"/>
+                    <rect x="174" y="232" width="16" height="4" rx="2" fill="#181115"/>
+
+                    <g class="girl-head">
+                        <path d="M140 182C122 170 114 190 128 202L144 192Z" fill="#DC2626"/>
+                        <path d="M224 182C242 170 250 190 236 202L220 192Z" fill="#DC2626"/>
+
+                        <rect x="138" y="152" width="88" height="80" rx="39" fill="#FFE4D9"/>
+
+                        <path d="M138 190C134 214 137 236 145 248" stroke="#1C151B" stroke-width="11" stroke-linecap="round"/>
+                        <path d="M226 190C230 214 227 236 219 248" stroke="#1C151B" stroke-width="11" stroke-linecap="round"/>
+
+                        <ellipse cx="155" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".55"/>
+                        <ellipse cx="209" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".55"/>
+
+                        <g class="anime-eye">
+                            <ellipse cx="162" cy="193" rx="8.5" ry="10.5" fill="#1E1419"/>
+                            <ellipse cx="162" cy="195" rx="6" ry="7" fill="#B91C1C"/>
+                            <circle cx="159" cy="189" r="3.2" fill="#FFFFFF"/>
+                            <circle cx="165" cy="198" r="1.6" fill="#FFFFFF"/>
+                            <path d="M151 182C156 178 167 178 172 182" stroke="#1E1419" stroke-width="2.6" stroke-linecap="round"/>
+                        </g>
+
+                        <g class="anime-eye">
+                            <ellipse cx="202" cy="193" rx="8.5" ry="10.5" fill="#1E1419"/>
+                            <ellipse cx="202" cy="195" rx="6" ry="7" fill="#B91C1C"/>
+                            <circle cx="199" cy="189" r="3.2" fill="#FFFFFF"/>
+                            <circle cx="205" cy="198" r="1.6" fill="#FFFFFF"/>
+                            <path d="M192 182C197 178 208 178 213 182" stroke="#1E1419" stroke-width="2.6" stroke-linecap="round"/>
+                        </g>
+
+                        <path d="M176 208C179 213 185 213 188 208" stroke="#991B1B" stroke-width="2.6" stroke-linecap="round"/>
+
+                        <path d="M135 188C135 154 156 142 182 142C208 142 229 154 229 188C219 172 208 167 199 179C190 163 174 163 165 179C156 167 145 172 135 188Z" fill="#1C151B"/>
+
+                        <circle cx="215" cy="166" r="7" fill="#DC2626"/>
+                        <circle cx="215" cy="166" r="2.8" fill="#D4AF37"/>
+                    </g>
+                </g>
+
+                <g class="chibi-boy-group">
+                    <ellipse cx="304" cy="331" rx="34" ry="6" fill="#090608" opacity=".7"/>
+
+                    <path d="M276 248C266 260 264 274 269 286" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+
+                    <g class="boy-wave-arm">
+                        <path d="M332 246C348 232 360 212 362 192" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="362" cy="189" r="7" fill="#FFE4D9"/>
+                        <path d="M358 184V175M366 184V175" stroke="#FFE4D9" stroke-width="3.2" stroke-linecap="round"/>
+                    </g>
+
+                    <rect x="286" y="292" width="13" height="32" rx="6.5" fill="#1C1921"/>
+                    <rect x="309" y="292" width="13" height="32" rx="6.5" fill="#1C1921"/>
+                    <rect x="280" y="317" width="21" height="11" rx="5.5" fill="#0D0B0E"/>
+                    <rect x="307" y="317" width="21" height="11" rx="5.5" fill="#0D0B0E"/>
+
+                    <path d="M274 242C280 232 328 232 334 242L340 296H268L274 242Z" fill="#1A161D"/>
+                    <path d="M290 238H318L322 296H286L290 238Z" fill="#2A1219"/>
+                    <path d="M296 254L304 245L312 254L304 268Z" fill="#D4AF37"/>
+                    <path d="M284 238L304 256L324 238" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <rect x="297" y="226" width="14" height="15" rx="6" fill="#FFE4D9"/>
+
+                    <g class="boy-head">
+                        <path d="M258 186C258 150 278 138 304 138C330 138 350 150 350 186C346 202 338 212 330 216H278C270 212 262 202 258 186Z" fill="#18131A"/>
+
+                        <rect x="260" y="152" width="88" height="80" rx="39" fill="#FFE4D9"/>
+
+                        <ellipse cx="277" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".5"/>
+                        <ellipse cx="331" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".5"/>
+
+                        <g class="anime-eye">
+                            <ellipse cx="284" cy="193" rx="8.5" ry="10" fill="#1E1419"/>
+                            <ellipse cx="284" cy="195" rx="5.8" ry="6.8" fill="#991B1B"/>
+                            <circle cx="281" cy="189" r="3.1" fill="#FFFFFF"/>
+                            <circle cx="287" cy="198" r="1.5" fill="#FFFFFF"/>
+                            <path d="M273 181C278 177 289 177 294 181" stroke="#1E1419" stroke-width="2.8" stroke-linecap="round"/>
+                        </g>
+
+                        <g class="anime-eye">
+                            <ellipse cx="324" cy="193" rx="8.5" ry="10" fill="#1E1419"/>
+                            <ellipse cx="324" cy="195" rx="5.8" ry="6.8" fill="#991B1B"/>
+                            <circle cx="321" cy="189" r="3.1" fill="#FFFFFF"/>
+                            <circle cx="327" cy="198" r="1.5" fill="#FFFFFF"/>
+                            <path d="M314 181C319 177 330 177 335 181" stroke="#1E1419" stroke-width="2.8" stroke-linecap="round"/>
+                        </g>
+
+                        <path d="M297 207C301 213 308 213 312 207" stroke="#991B1B" stroke-width="2.6" stroke-linecap="round"/>
+
+                        <path d="M256 186C256 150 278 136 304 136C330 136 352 150 352 186C340 168 328 164 318 178C310 160 294 160 284 178C274 164 264 168 256 186Z" fill="#18131A"/>
+                        <path d="M262 162C286 152 322 152 346 162" stroke="#B91C1C" stroke-width="7" stroke-linecap="round"/>
+                    </g>
+                </g>
+
+                <g class="flame-pop">
+                    <path d="M244 162L247 170L255 173L247 176L244 184L241 176L233 173L241 170L244 162Z" fill="#D4AF37"/>
+                </g>
+            </svg>
+        </div>
+
+        <h1 class="welcome-title">
+            Selamat Datang di <span class="store-name-text">DND Store</span>!
+        </h1>
+
+        <p class="welcome-desc">
+            Pilih metode pembayaran favoritmu, salin nomor atau pindai QRIS dengan cepat dan praktis.
+        </p>
+
+        <div class="welcome-steps">
+            <div class="welcome-step">
+                <span class="welcome-step-num">01</span>
+                <span class="welcome-step-text">Pilih Metode</span>
+            </div>
+            <div class="welcome-step">
+                <span class="welcome-step-num">02</span>
+                <span class="welcome-step-text">Transfer / Scan</span>
+            </div>
+            <div class="welcome-step">
+                <span class="welcome-step-num">03</span>
+                <span class="welcome-step-text">Konfirmasi WA</span>
+            </div>
+        </div>
+
+        <button type="button" class="enter-btn" id="openPaymentBtn">
+            <span>Lanjutkan ke Pembayaran</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14m-6-6 6 6-6 6"/>
+            </svg>
+        </button>
+
+    </div>
+</section>
+
+<div class="container page-view" id="paymentPage" hidden>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="15" rx="3"/>
+                    <path d="M2 10h20M6 15h5"/>
+                </svg>
+            </div>
+            <div>
+                <span class="brand-name store-name-text">DND Store</span>
+                <span class="brand-subtitle">Portal Pembayaran Resmi</span>
+            </div>
+        </div>
+
+        <button type="button" class="back-btn" id="backHomeBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+            </svg>
+            Halaman Awal
+        </button>
+    </header>
+
+    <main class="main-card">
+
+        <div class="error-banner" id="errorBanner" hidden>
+            Informasi pembayaran belum dapat dimuat. Pastikan data.json tersedia dan telah diisi.
+        </div>
+
+        <div class="recipient">
+            <div class="recipient-avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </div>
+            <div class="recipient-content">
+                <div class="eyebrow">Informasi Penerima</div>
+                <h2>Pembayaran Resmi</h2>
+                <p id="description">Memuat informasi pembayaran...</p>
+                <div class="name-pill">
+                    <span>a.n.</span>
+                    <strong id="ownerName">Memuat...</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="notice">
+            <div class="notice-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 22h18M6 18v-7m4 7v-7m4 7v-7m4 7v-7M3 8l9-5 9 5H3Z"/>
+                </svg>
+            </div>
+            <div>
+                <h3>Pemberitahuan Transfer Bank</h3>
+                <p>
+                    Apabila Anda melakukan pembayaran melalui rekening <strong>Bank (Mobile Banking / ATM)</strong>,
+                    mohon gunakan metode <button type="button" id="noticeQris">QRIS</button> dan
+                    <strong>jangan melakukan transfer ke nomor E-Wallet</strong> karena terdapat potongan biaya administrasi pada E-Wallet.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-head">
+            <div>
+                <h3>Dompet Digital (Sesama E-Wallet)</h3>
+                <p>Nomor disembunyikan demi keamanan. Klik tombol untuk langsung menyalin nomor.</p>
+            </div>
+            <div class="section-tag">Instan</div>
+        </div>
+
+        <div class="method-list">
+
+            <div class="method-card">
+                <div class="method-logo dana" aria-label="DANA">
+                    <svg viewBox="0 0 92 28" width="100%" height="100%" fill="none">
+                        <path d="M6 14C10 9 16 19 20 14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                        <text x="26" y="19" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="16">DANA</text>
+                    </svg>
+                </div>
+                <div class="method-detail">
+                    <strong>DANA</strong>
+                    <p>Salin nomor pembayaran</p>
+                </div>
+                <button class="copy-button" data-wallet="dana" type="button" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="8" y="8" width="13" height="13" rx="2"/>
+                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                    </svg>
+                    <span>Salin Nomor</span>
+                </button>
+            </div>
+
+            <div class="method-card">
+                <div class="method-logo gopay" aria-label="GoPay">
+                    <svg viewBox="0 0 96 28" width="100%" height="100%" fill="none">
+                        <rect x="4" y="6" width="18" height="15" rx="3.5" stroke="white" stroke-width="2.4"/>
+                        <path d="M16 13.5H20" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+                        <text x="27" y="19" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="15.5">gopay</text>
+                    </svg>
+                </div>
+                <div class="method-detail">
+                    <strong>GoPay</strong>
+                    <p>Salin nomor pembayaran</p>
+                </div>
+                <button class="copy-button" data-wallet="gopay" type="button" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="8" y="8" width="13" height="13" rx="2"/>
+                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                    </svg>
+                    <span>Salin Nomor</span>
+                </button>
+            </div>
+
+            <div class="method-card">
+                <div class="method-logo shopeepay" aria-label="ShopeePay">
+                    <svg viewBox="0 0 108 28" width="100%" height="100%" fill="none">
+                        <path d="M9 9V7.5C9 5.5 10.6 4 12.5 4C14.4 4 16 5.5 16 7.5V9" stroke="white" stroke-width="2"/>
+                        <rect x="5" y="9" width="15" height="14" rx="2.5" stroke="white" stroke-width="2"/>
+                        <text x="24" y="18.5" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="12.5">ShopeePay</text>
+                    </svg>
+                </div>
+                <div class="method-detail">
+                    <strong>ShopeePay</strong>
+                    <p>Salin nomor pembayaran</p>
+                </div>
+                <button class="copy-button" data-wallet="shopeepay" type="button" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="8" y="8" width="13" height="13" rx="2"/>
+                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                    </svg>
+                    <span>Salin Nomor</span>
+                </button>
+            </div>
+
+        </div>
+
+        <section class="qris-card" id="qrisCard">
+
+            <button class="qris-trigger" id="qrisTrigger" type="button" aria-expanded="false" aria-controls="qrisContent">
+                <div class="method-logo qris" aria-label="QRIS">
+                    <svg viewBox="0 0 84 28" width="100%" height="100%" fill="none">
+                        <path d="M5 9V4H10M22 4H27V9M27 19V24H22M10 24H5V19" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"/>
+                        <text x="14" y="19" fill="#181217" font-family="Poppins,sans-serif" font-weight="800" font-size="15.5">QRIS</text>
+                    </svg>
+                </div>
+                <div class="method-detail">
+                    <strong>
+                        QRIS & Kalkulator
+                        <span class="recommended">Semua Bank & E-Wallet</span>
+                    </strong>
+                    <p>Klik untuk membuka kode QRIS & kalkulator biaya</p>
+                </div>
+                <div class="chevron-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </div>
+            </button>
+
+            <div class="qris-content" id="qrisContent">
+                <div class="qris-content-inner">
+                    <div class="qris-body">
+
+                        <div class="fee-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 11v5m0-8h.01"/>
+                            </svg>
+                            <div>
+                                <strong>Ketentuan Biaya QRIS</strong>
+                                <div>
+                                    Transaksi menggunakan QRIS dengan nominal di atas
+                                    <strong id="feeThresholdText">Rp 499.000</strong>
+                                    dikenakan biaya tambahan sebesar
+                                    <strong id="feePercentText">1%</strong> dari nominal.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calculator">
+                            <div class="calculator-heading">
+                                <h4>Kalkulator Nominal QRIS</h4>
+                                <span class="fee-badge" id="feeBadge">Bebas Biaya 0%</span>
+                            </div>
+
+                            <div class="amount-input">
+                                <span>Rp</span>
+                                <input id="amountInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Masukkan nominal transaksi">
+                            </div>
+
+                            <div class="preset-list">
+                                <button type="button" data-amount="250000">Rp 250.000</button>
+                                <button type="button" data-amount="500000">Rp 500.000</button>
+                                <button type="button" data-amount="1000000">Rp 1.000.000</button>
+                            </div>
+
+                            <div class="calculation">
+                                <div class="calc-line">
+                                    <span>Nominal transaksi</span>
+                                    <strong id="baseAmount">Rp 0</strong>
+                                </div>
+                                <div class="calc-line">
+                                    <span id="feeLabel">Biaya tambahan (0%)</span>
+                                    <strong id="feeAmount">Rp 0</strong>
+                                </div>
+                                <div class="calc-line total">
+                                    <span>Total yang harus dibayar</span>
+                                    <strong id="totalAmount">Rp 0</strong>
+                                </div>
+                            </div>
+
+                            <button class="soft-button" id="copyTotal" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="8" y="8" width="13" height="13" rx="2"/>
+                                    <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                                </svg>
+                                Salin Total Pembayaran
+                            </button>
+                        </div>
+
+                        <div class="qris-display">
+                            <h4>Pindai Kode QRIS</h4>
+                            <p>Scan melalui aplikasi bank atau e-wallet Anda.</p>
+
+                            <div class="qris-image-box">
+                                <img id="qrisImage" alt="Kode QRIS Pembayaran" hidden>
+                                <div class="qris-unavailable" id="qrisUnavailable">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                        <path d="M14 14h3v3h-3zm7 0v4m-7 3h7"/>
+                                    </svg>
+                                    <span>Gambar QRIS belum tersedia.</span>
+                                </div>
+                            </div>
+
+                            <div class="qris-actions">
+                                <button class="soft-button" id="zoomQris" type="button" disabled>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M15 3h6v6m-7 1 7-7M9 21H3v-6m7-1-7 7"/>
+                                    </svg>
+                                    Perbesar QRIS
+                                </button>
+
+                                <button class="soft-button" id="downloadQris" type="button" disabled>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/>
+                                    </svg>
+                                    Simpan QRIS
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="confirm-card">
+            <div>
+                <h3>Sudah menyelesaikan pembayaran?</h3>
+                <p>Kirimkan konfirmasi beserta bukti transfer melalui WhatsApp agar pesanan dapat segera diproses.</p>
+            </div>
+
+            <button class="whatsapp-button" id="confirmButton" type="button" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/>
+                    <path d="M9 9c.5 3 2.5 5 6 6l1.5-1.5"/>
+                </svg>
+                Konfirmasi via WhatsApp
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <strong>Portal Pembayaran</strong>
+        Pastikan inisial penerima dan nominal pembayaran sudah sesuai sebelum menyelesaikan transaksi.
+        <div>© <span id="footerYear"></span> All Rights Reserved.</div>
+    </footer>
+
+</div>
+
+<div class="modal" id="qrisModal" role="dialog" aria-modal="true" aria-label="Perbesar gambar QRIS" hidden>
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal" type="button" aria-label="Tutup pratinjau QRIS">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <img id="modalImage" alt="QRIS Pembayaran ukuran penuh">
+    </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const formatNumber = value => Number(value).toLocaleString("id-ID");
+const rupiah = value => "Rp " + formatNumber(value);
+
+let config = null;
+let calculatedTotal = 0;
+let qrisReady = false;
+let toastTimer = null;
+let lastModalFocus = null;
+
+function maskName(name) {
+    const clean = String(name || "").trim();
+
+    if (!clean) return "Belum tersedia";
+
+    return clean.split(/\s+/).map(word => {
+        if (word.includes("*")) return word;
+
+        const chars = Array.from(word);
+
+        if (chars.length <= 1) return word.toUpperCase();
+
+        return chars[0].toLocaleUpperCase("id-ID") +
+            "*".repeat(chars.length - 1);
+    }).join(" ");
+}
+
+function cleanPhone(value) {
+    return String(value || "").replace(/\D/g, "");
+}
+
+function showToast(message) {
+    $("toastText").textContent = message;
+    $("toast").classList.add("active");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        $("toast").classList.remove("active");
+    }, 2700);
+}
+
+function createSakuraPetals() {
+    const sky = $("sakuraSky");
+
+    if (!sky) return;
+
+    sky.replaceChildren();
+
+    const total = window.matchMedia("(max-width: 590px)").matches ? 24 : 36;
+
+    for (let i = 0; i < total; i++) {
+        const petal = document.createElement("div");
+        petal.className = "sakura-petal";
+
+        const isFeather = i % 4 === 0;
+        const size = isFeather ? (13 + Math.random() * 11) : (8 + Math.random() * 9);
+        const left = Math.random() * 100;
+        const duration = 7 + Math.random() * 10;
+        const delay = -(Math.random() * 18);
+        const drift = 75 + Math.random() * 165;
+        const direction = Math.random() > .5 ? 1 : -1;
+
+        petal.style.left = left + "vw";
+        petal.style.width = size + "px";
+        petal.style.height = size + "px";
+        petal.style.animationDuration = duration + "s";
+        petal.style.animationDelay = delay + "s";
+        petal.style.setProperty("--drift", (drift * direction) + "px");
+        petal.style.setProperty("--rotation", (360 * direction) + "deg");
+
+        if (isFeather) {
+            petal.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" style="animation-duration:${2.2 + Math.random() * 1.8}s">
+                    <path d="M4 20C5 11 11 5 20 4C19 13 13 19 4 20Z" fill="#2A1D24" stroke="#7F1D1D" stroke-width="1"/>
+                    <path d="M5 19L18 6" stroke="#D4AF37" stroke-width="1" stroke-linecap="round" opacity=".65"/>
+                </svg>
+            `;
+        } else {
+            const colors = ["#DC2626","#EF4444","#F59E0B","#D4AF37"];
+            const fill = colors[i % colors.length];
+
+            petal.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" style="animation-duration:${1.8 + Math.random() * 1.6}s">
+                    <path d="M12 2C15 8 19 11 16 17C14 20 10 20 8 17C5 11 9 8 12 2Z" fill="${fill}" opacity=".88"/>
+                </svg>
+            `;
+        }
+
+        sky.appendChild(petal);
+    }
+}
+
+function showPaymentPage() {
+    $("welcomePage").hidden = true;
+    $("paymentPage").hidden = false;
+    window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function showWelcomePage() {
+    $("paymentPage").hidden = true;
+    $("welcomePage").hidden = false;
+    window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+async function copyText(value) {
+    if (!value) return false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(value);
+            return true;
+        } catch {}
+    }
+
+    const textarea = document.createElement("textarea");
+
+    textarea.value = value;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    let success = false;
+
+    try {
+        success = document.execCommand("copy");
+    } catch {}
+
+    textarea.remove();
+
+    return success;
+}
+
+async function copyWallet(key, button) {
+    if (!config) return;
+
+    const value = cleanPhone(config[key]);
+
+    if (!value) {
+        showToast("Nomor pembayaran belum tersedia.");
+        return;
+    }
+
+    const success = await copyText(value);
+
+    if (!success) {
+        showToast("Gagal menyalin nomor pembayaran.");
+        return;
+    }
+
+    const label = button.querySelector("span");
+
+    label.textContent = "Tersalin!";
+    button.classList.add("success");
+
+    clearTimeout(button.resetTimer);
+
+    button.resetTimer = setTimeout(() => {
+        label.textContent = "Salin Nomor";
+        button.classList.remove("success");
+    }, 1800);
+
+    const provider = {
+        dana: "DANA",
+        gopay: "GoPay",
+        shopeepay: "ShopeePay"
+    }[key] || "E-Wallet";
+
+    showToast("Nomor " + provider + " berhasil disalin.");
+}
+
+function safeImageUrl(value) {
+    if (!value || typeof value !== "string") return "";
+
+    try {
+        const url = new URL(value, document.baseURI);
+
+        if (!["http:", "https:"].includes(url.protocol)) return "";
+
+        return url.href;
+    } catch {
+        return "";
+    }
+}
+
+function setQrisUnavailable() {
+    qrisReady = false;
+
+    $("qrisImage").hidden = true;
+    $("qrisUnavailable").hidden = false;
+    $("zoomQris").disabled = true;
+    $("downloadQris").disabled = true;
+}
+
+function renderQris() {
+    setQrisUnavailable();
+
+    if (!config || !config.qrisImage) return;
+
+    const source = safeImageUrl(config.qrisImage);
+
+    if (!source) return;
+
+    const image = $("qrisImage");
+
+    image.onload = () => {
+        qrisReady = true;
+        image.hidden = false;
+        $("qrisUnavailable").hidden = true;
+        $("zoomQris").disabled = false;
+        $("downloadQris").disabled = false;
+    };
+
+    image.onerror = setQrisUnavailable;
+
+    image.src = source;
+}
+
+function renderConfig() {
+    if (!config) return;
+
+    const storeName = config.namaToko || "DND Store";
+
+    document.querySelectorAll(".store-name-text").forEach(element => {
+        element.textContent = storeName;
+    });
+
+    $("ownerName").textContent = maskName(config.namaPenerima);
+
+    $("description").textContent = config.deskripsi ||
+        "Silakan pilih metode pembayaran dan pastikan inisial nama penerima sudah sesuai sebelum menyelesaikan transaksi.";
+
+    $("feeThresholdText").textContent = rupiah(config.batasBiaya);
+    $("feePercentText").textContent = config.persenBiaya + "%";
+
+    document.querySelectorAll("[data-wallet]").forEach(button => {
+        button.disabled = !cleanPhone(config[button.dataset.wallet]);
+    });
+
+    $("confirmButton").disabled = !cleanPhone(config.whatsapp);
+
+    renderQris();
+
+    const amount = Number($("amountInput").value.replace(/\D/g, "")) || 0;
+    updateCalculation(amount);
+}
+
+async function loadData() {
+    try {
+        const response = await fetch("./data.json", { cache: "no-store" });
+
+        if (!response.ok) throw new Error("Data tidak tersedia");
+
+        const data = await response.json();
+
+        const validThreshold = Number(data.batasBiaya);
+        const validPercent = Number(data.persenBiaya);
+
+        config = {
+            namaToko: String(data.namaToko || "DND Store"),
+            namaPenerima: String(data.namaPenerima || ""),
+            deskripsi: String(data.deskripsi || ""),
+            dana: String(data.dana || ""),
+            gopay: String(data.gopay || ""),
+            shopeepay: String(data.shopeepay || ""),
+            whatsapp: String(data.whatsapp || ""),
+            qrisImage: String(data.qrisImage || ""),
+            batasBiaya: Number.isFinite(validThreshold) && validThreshold >= 0
+                ? validThreshold : 499000,
+            persenBiaya: Number.isFinite(validPercent) && validPercent >= 0
+                ? validPercent : 1
+        };
+
+        renderConfig();
+
+    } catch {
+        $("errorBanner").hidden = false;
+        $("ownerName").textContent = "Belum tersedia";
+        $("description").textContent = "Informasi pembayaran belum dapat dimuat.";
+        setQrisUnavailable();
+        showToast("Gagal memuat informasi pembayaran.");
+    }
+}
+
+function toggleQris(forceOpen = null) {
+    const card = $("qrisCard");
+
+    const isOpen = forceOpen === null
+        ? !card.classList.contains("active")
+        : forceOpen;
+
+    card.classList.toggle("active", isOpen);
+    $("qrisTrigger").setAttribute("aria-expanded", String(isOpen));
+    $("qrisContent").inert = !isOpen;
+}
+
+function openQris() {
+    toggleQris(true);
+
+    setTimeout(() => {
+        $("qrisCard").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 100);
+}
+
+function updateCalculation(amount) {
+    const limit = config ? config.batasBiaya : 499000;
+    const percentage = config ? config.persenBiaya : 1;
+
+    const feeApplied = amount > limit;
+    const fee = feeApplied ? Math.round(amount * percentage / 100) : 0;
+
+    calculatedTotal = amount + fee;
+
+    $("baseAmount").textContent = rupiah(amount);
+    $("feeAmount").textContent = fee ? "+ " + rupiah(fee) : "Rp 0";
+    $("totalAmount").textContent = rupiah(calculatedTotal);
+    $("feeLabel").textContent = "Biaya tambahan (" +
+        (feeApplied ? percentage : 0) + "%)";
+
+    $("feeBadge").textContent = feeApplied
+        ? "Biaya +" + percentage + "%"
+        : "Bebas Biaya 0%";
+
+    $("feeBadge").classList.toggle("applied", feeApplied);
+}
+
+function handleAmountInput(value) {
+    const digits = String(value).replace(/\D/g, "").slice(0, 12);
+    const amount = digits ? Number(digits) : 0;
+
+    $("amountInput").value = digits ? formatNumber(amount) : "";
+
+    updateCalculation(amount);
+}
+
+async function copyCalculatedTotal() {
+    if (calculatedTotal <= 0) {
+        showToast("Masukkan nominal terlebih dahulu.");
+        return;
+    }
+
+    const success = await copyText(String(calculatedTotal));
+
+    showToast(success
+        ? "Total " + rupiah(calculatedTotal) + " berhasil disalin."
+        : "Gagal menyalin nominal pembayaran.");
+}
+
+function openQrisModal() {
+    if (!qrisReady) return;
+
+    lastModalFocus = document.activeElement;
+
+    $("modalImage").src = $("qrisImage").src;
+    $("qrisModal").hidden = false;
+
+    document.body.classList.add("modal-open");
+    $("closeModal").focus();
+}
+
+function closeQrisModal() {
+    $("qrisModal").hidden = true;
+    document.body.classList.remove("modal-open");
+
+    if (lastModalFocus) lastModalFocus.focus();
+}
+
+async function downloadQris() {
+    if (!qrisReady) return;
+
+    const source = $("qrisImage").src;
+
+    try {
+        const response = await fetch(source);
+
+        if (!response.ok) throw new Error("Download failed");
+
+        const blob = await response.blob();
+        const objectUrl = URL.createObjectURL(blob);
+
+        let extension = "png";
+
+        if (blob.type.includes("jpeg")) extension = "jpg";
+        if (blob.type.includes("webp")) extension = "webp";
+
+        const link = document.createElement("a");
+
+        link.href = objectUrl;
+        link.download = "QRIS-Pembayaran." + extension;
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+
+        showToast("Gambar QRIS berhasil disiapkan.");
+
+    } catch {
+        window.open(source, "_blank", "noopener,noreferrer");
+        showToast("Gambar QRIS dibuka. Silakan simpan melalui browser.");
+    }
+}
+
+function confirmPayment() {
+    if (!config) return;
+
+    let phone = cleanPhone(config.whatsapp);
+
+    if (!phone) {
+        showToast("Nomor WhatsApp belum tersedia.");
+        return;
+    }
+
+    if (phone.startsWith("0")) {
+        phone = "62" + phone.slice(1);
+    } else if (phone.startsWith("8")) {
+        phone = "62" + phone;
+    }
+
+    let message = "Halo, saya ingin konfirmasi pembayaran.";
+
+    if (calculatedTotal > 0) {
+        message += "\nTotal Pembayaran: " + rupiah(calculatedTotal);
+    }
+
+    message += "\nSaya akan mengirimkan bukti transfer untuk pemeriksaan. Terima kasih.";
+
+    const url = "https://wa.me/" + phone +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank", "noopener,noreferrer");
+}
+
+$("openPaymentBtn").addEventListener("click", showPaymentPage);
+$("backHomeBtn").addEventListener("click", showWelcomePage);
+
+document.querySelectorAll("[data-wallet]").forEach(button => {
+    button.addEventListener("click", () => {
+        copyWallet(button.dataset.wallet, button);
+    });
+});
+
+document.querySelectorAll("[data-amount]").forEach(button => {
+    button.addEventListener("click", () => {
+        const amount = Number(button.dataset.amount);
+        $("amountInput").value = formatNumber(amount);
+        updateCalculation(amount);
+    });
+});
+
+$("amountInput").addEventListener("input", event => {
+    handleAmountInput(event.target.value);
+});
+
+$("qrisTrigger").addEventListener("click", () => toggleQris());
+$("noticeQris").addEventListener("click", openQris);
+$("copyTotal").addEventListener("click", copyCalculatedTotal);
+$("zoomQris").addEventListener("click", openQrisModal);
+$("downloadQris").addEventListener("click", downloadQris);
+$("confirmButton").addEventListener("click", confirmPayment);
+$("closeModal").addEventListener("click", closeQrisModal);
+
+$("qrisModal").addEventListener("click", event => {
+    if (event.target === $("qrisModal")) closeQrisModal();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !$("qrisModal").hidden) {
+        closeQrisModal();
+    }
+});
+
+$("footerYear").textContent = new Date().getFullYear();
+$("qrisContent").inert = true;
+
+createSakuraPetals();
+loadData();
+</script>
+</body>
+</html>
