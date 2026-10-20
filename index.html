@@ -115,16 +115,16 @@ svg { display: block; }
     inset: 0;
     overflow: hidden;
     pointer-events: none;
-    z-index: 2;
+    z-index: 60;
 }
 
 .roaming-bat {
     position: absolute;
-    width: 115px;
-    height: 62px;
+    width: 96px;
+    height: 48px;
     pointer-events: none;
     will-change: transform;
-    filter: drop-shadow(0 6px 14px rgba(220,38,38,.35));
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,.7)) drop-shadow(0 0 8px rgba(220,38,38,.35));
 }
 
 .roaming-bat svg {
@@ -134,93 +134,93 @@ svg { display: block; }
 }
 
 .roaming-bat.bat-one {
-    top: 8%;
-    left: -150px;
-    animation: flyLeftToRightA 12s linear infinite;
+    top: 7%;
+    left: -140px;
+    animation: flyLeftToRightA 11s linear infinite;
 }
 
 .roaming-bat.bat-two {
-    top: 22%;
-    left: -150px;
-    width: 95px;
-    height: 51px;
-    animation: flyRightToLeftA 15s linear -3s infinite;
+    top: 16%;
+    left: -140px;
+    width: 86px;
+    height: 44px;
+    animation: flyRightToLeftA 13s linear -3s infinite;
 }
 
 .roaming-bat.bat-three {
-    top: 45%;
-    left: -150px;
-    width: 85px;
-    height: 46px;
-    animation: flyLeftToRightB 17s linear -7s infinite;
+    top: 26%;
+    left: -140px;
+    width: 78px;
+    height: 40px;
+    animation: flyLeftToRightB 15s linear -6s infinite;
 }
 
 .roaming-bat.bat-four {
-    top: 68%;
-    left: -150px;
-    width: 102px;
-    height: 55px;
-    animation: flyRightToLeftB 14s linear -2s infinite;
+    top: 36%;
+    left: -140px;
+    width: 90px;
+    height: 46px;
+    animation: flyRightToLeftB 12.5s linear -1.5s infinite;
 }
 
 .roaming-bat.bat-five {
-    top: 85%;
-    left: -150px;
-    width: 78px;
-    height: 42px;
-    animation: flyLeftToRightC 20s linear -10s infinite;
+    top: 47%;
+    left: -140px;
+    width: 74px;
+    height: 38px;
+    animation: flyLeftToRightC 16s linear -9s infinite;
 }
 
 @keyframes flyLeftToRightA {
-    0% { transform: translate3d(-10vw,15px,0) scale(.88) rotate(4deg); opacity: 0; }
-    8% { opacity: .92; }
-    50% { transform: translate3d(55vw,-25px,0) scale(1) rotate(-4deg); opacity: .95; }
-    92% { opacity: .92; }
-    100% { transform: translate3d(118vw,10px,0) scale(.9) rotate(4deg); opacity: 0; }
+    0% { transform: translate3d(-15vw,12px,0) scale(.86) rotate(4deg); opacity: 0; }
+    8% { opacity: .95; }
+    50% { transform: translate3d(55vw,-18px,0) scale(1) rotate(-4deg); opacity: .98; }
+    92% { opacity: .95; }
+    100% { transform: translate3d(120vw,8px,0) scale(.88) rotate(4deg); opacity: 0; }
 }
 
 @keyframes flyRightToLeftA {
-    0% { transform: translate3d(118vw,-15px,0) scaleX(-1) scale(.9) rotate(-4deg); opacity: 0; }
-    8% { opacity: .88; }
-    50% { transform: translate3d(48vw,22px,0) scaleX(-1) scale(.8) rotate(5deg); opacity: .9; }
-    92% { opacity: .88; }
-    100% { transform: translate3d(-15vw,-18px,0) scaleX(-1) scale(.9) rotate(-4deg); opacity: 0; }
+    0% { transform: translate3d(120vw,-12px,0) scaleX(-1) scale(.88) rotate(-4deg); opacity: 0; }
+    8% { opacity: .92; }
+    50% { transform: translate3d(48vw,18px,0) scaleX(-1) scale(.82) rotate(5deg); opacity: .95; }
+    92% { opacity: .92; }
+    100% { transform: translate3d(-18vw,-14px,0) scaleX(-1) scale(.88) rotate(-4deg); opacity: 0; }
 }
 
 @keyframes flyLeftToRightB {
-    0% { transform: translate3d(-12vw,30px,0) scale(.75) rotate(-5deg); opacity: 0; }
-    10% { opacity: .85; }
-    50% { transform: translate3d(52vw,-20px,0) scale(.85) rotate(3deg); opacity: .88; }
-    90% { opacity: .85; }
-    100% { transform: translate3d(118vw,-40px,0) scale(.78) rotate(-4deg); opacity: 0; }
+    0% { transform: translate3d(-15vw,20px,0) scale(.76) rotate(-5deg); opacity: 0; }
+    10% { opacity: .9; }
+    50% { transform: translate3d(52vw,-16px,0) scale(.86) rotate(3deg); opacity: .94; }
+    90% { opacity: .9; }
+    100% { transform: translate3d(120vw,-28px,0) scale(.78) rotate(-4deg); opacity: 0; }
 }
 
 @keyframes flyRightToLeftB {
-    0% { transform: translate3d(118vw,25px,0) scaleX(-1) scale(.85) rotate(5deg); opacity: 0; }
-    10% { opacity: .88; }
-    50% { transform: translate3d(50vw,-30px,0) scaleX(-1) scale(.78) rotate(-4deg); opacity: .9; }
-    90% { opacity: .88; }
-    100% { transform: translate3d(-15vw,15px,0) scaleX(-1) scale(.85) rotate(5deg); opacity: 0; }
+    0% { transform: translate3d(120vw,18px,0) scaleX(-1) scale(.84) rotate(5deg); opacity: 0; }
+    10% { opacity: .92; }
+    50% { transform: translate3d(50vw,-22px,0) scaleX(-1) scale(.78) rotate(-4deg); opacity: .95; }
+    90% { opacity: .92; }
+    100% { transform: translate3d(-18vw,12px,0) scaleX(-1) scale(.84) rotate(5deg); opacity: 0; }
 }
 
 @keyframes flyLeftToRightC {
-    0% { transform: translate3d(-12vw,-10px,0) scale(.7) rotate(6deg); opacity: 0; }
-    10% { opacity: .8; }
-    50% { transform: translate3d(55vw,25px,0) scale(.8) rotate(-3deg); opacity: .85; }
-    90% { opacity: .8; }
-    100% { transform: translate3d(118vw,-15px,0) scale(.72) rotate(4deg); opacity: 0; }
+    0% { transform: translate3d(-15vw,-8px,0) scale(.72) rotate(6deg); opacity: 0; }
+    10% { opacity: .88; }
+    50% { transform: translate3d(55vw,20px,0) scale(.82) rotate(-3deg); opacity: .92; }
+    90% { opacity: .88; }
+    100% { transform: translate3d(120vw,-12px,0) scale(.74) rotate(4deg); opacity: 0; }
 }
 
 .flap-left {
     transform-box: fill-box;
     transform-origin: right center;
-    animation: fastWingLeft .35s ease-in-out infinite alternate;
+    animation: fastWingLeft .34s ease-in-out infinite alternate;
 }
 
 .flap-right {
     transform-box: fill-box;
     transform-origin: left center;
-    animation: fastWingRight .35s ease-in-out infinite alternate;
+    animation: fastWingRight .34s ease-in-out infinite alternate;
 }
 
 @keyframes fastWingLeft {
@@ -269,7 +269,7 @@ svg { display: block; }
     width: 420px;
     height: 420px;
     border-radius: 50%;
-    background: radial-gradient(circle,rgba(220,38,38,.25),transparent 70%);
+    background: radial-gradient(circle,rgba(220,38,38,.22),transparent 70%);
     left: 50%;
     top: 25px;
     transform: translateX(-50%);
@@ -300,8 +300,8 @@ svg { display: block; }
 
 .sakura-stage {
     position: relative;
-    width: min(100%,490px);
-    height: 335px;
+    width: min(100%,480px);
+    height: 340px;
     margin: 10px auto 6px;
     display: flex;
     align-items: flex-end;
@@ -314,54 +314,131 @@ svg { display: block; }
     overflow: visible;
 }
 
-.chibi-deathbat {
+.blood-moon {
     transform-box: fill-box;
     transform-origin: center;
-    animation: chibiBatFloat 3.2s ease-in-out infinite;
+    animation: moonPulse 4.5s ease-in-out infinite alternate;
 }
 
-@keyframes chibiBatFloat {
-    0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-7px) scale(1.03); }
+@keyframes moonPulse {
+    0% { transform: scale(.98); opacity: .9; }
+    100% { transform: scale(1.03); opacity: 1; }
 }
 
-.chibi-wing-left {
-    transform-box: fill-box;
-    transform-origin: right center;
-    animation: chibiWingL 1.6s ease-in-out infinite alternate;
-}
-
-.chibi-wing-right {
+.tree-branch {
     transform-box: fill-box;
     transform-origin: left center;
-    animation: chibiWingR 1.6s ease-in-out infinite alternate;
+    animation: branchWind 4.2s ease-in-out infinite alternate;
 }
 
-@keyframes chibiWingL {
-    0% { transform: rotate(-10deg); }
-    100% { transform: rotate(14deg); }
+@keyframes branchWind {
+    from { transform: rotate(-1.8deg); }
+    to { transform: rotate(1.8deg); }
 }
 
-@keyframes chibiWingR {
-    0% { transform: rotate(10deg); }
-    100% { transform: rotate(-14deg); }
+.chibi-girl-group {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: chibiFloat 3.4s ease-in-out infinite;
 }
 
-.chibi-eye-glow {
+.chibi-boy-group {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: chibiFloat 3.4s ease-in-out -1.7s infinite;
+}
+
+@keyframes chibiFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.girl-head {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: girlHeadTilt 3.4s ease-in-out infinite alternate;
+}
+
+.boy-head {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: boyHeadTilt 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes girlHeadTilt {
+    0% { transform: rotate(-2.5deg); }
+    100% { transform: rotate(3deg); }
+}
+
+@keyframes boyHeadTilt {
+    0% { transform: rotate(2.5deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+.girl-wave-left {
+    transform-box: fill-box;
+    transform-origin: 82% 84%;
+    animation: metalWaveLeft 1.15s ease-in-out infinite alternate;
+}
+
+.girl-wave-right {
+    transform-box: fill-box;
+    transform-origin: 18% 84%;
+    animation: metalWaveRight 1.15s ease-in-out -.4s infinite alternate;
+}
+
+.boy-wave-left {
+    transform-box: fill-box;
+    transform-origin: 82% 84%;
+    animation: metalWaveLeft 1.05s ease-in-out -.3s infinite alternate;
+}
+
+.boy-wave-right {
+    transform-box: fill-box;
+    transform-origin: 18% 84%;
+    animation: metalWaveRight 1.05s ease-in-out infinite alternate;
+}
+
+@keyframes metalWaveLeft {
+    0% { transform: rotate(-12deg); }
+    100% { transform: rotate(18deg); }
+}
+
+@keyframes metalWaveRight {
+    0% { transform: rotate(-16deg); }
+    100% { transform: rotate(20deg); }
+}
+
+.anime-eye {
     transform-box: fill-box;
     transform-origin: center;
-    animation: eyeGlowPulse 2.2s ease-in-out infinite alternate;
+    animation: eyeBlink 4.6s infinite;
 }
 
-@keyframes eyeGlowPulse {
-    0% { opacity: .75; transform: scale(.95); }
-    100% { opacity: 1; transform: scale(1.15); }
+@keyframes eyeBlink {
+    0%,44%,48%,100% { transform: scaleY(1); }
+    46% { transform: scaleY(.08); }
+}
+
+.flame-pop {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: flameRise 2.4s ease-in-out infinite;
+}
+
+.flame-pop.delay {
+    animation-delay: -1.2s;
+}
+
+@keyframes flameRise {
+    0%,100% { transform: translateY(0) scale(.92); opacity: .8; }
+    50% { transform: translateY(-8px) scale(1.12); opacity: 1; }
 }
 
 .speech-hai {
     position: absolute;
-    top: 55px;
-    right: 28px;
+    top: 56px;
+    right: 22px;
     z-index: 6;
     display: inline-flex;
     align-items: center;
@@ -762,36 +839,8 @@ svg { display: block; }
     font-weight: 700;
 }
 
-.chevron-box {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: #120E14;
-    color: var(--gold);
-}
-
-.chevron-box svg {
-    width: 16px;
-    height: 16px;
-    transition: transform .3s;
-}
-
-.qris-card.active .chevron-box svg {
-    transform: rotate(180deg);
-}
-
 .qris-content {
     display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    transition: grid-template-rows .35s ease,opacity .3s ease;
-}
-
-.qris-card.active .qris-content {
     grid-template-rows: 1fr;
     opacity: 1;
 }
@@ -1228,14 +1277,27 @@ svg { display: block; }
 
     .sakura-stage {
         width: 100%;
-        height: 275px;
+        height: 280px;
         margin: 8px auto 4px;
     }
 
-    .roaming-bat {
-        width: 86px;
-        height: 46px;
+    .speech-hai {
+        right: 8px;
+        top: 40px;
+        padding: 5px 11px;
+        font-size: 11.5px;
     }
+
+    .roaming-bat {
+        width: 72px;
+        height: 36px;
+    }
+
+    .roaming-bat.bat-one { top: 6%; }
+    .roaming-bat.bat-two { top: 14%; width: 66px; height: 34px; }
+    .roaming-bat.bat-three { top: 22%; width: 60px; height: 31px; }
+    .roaming-bat.bat-four { top: 31%; width: 68px; height: 35px; }
+    .roaming-bat.bat-five { top: 40%; width: 58px; height: 30px; }
 
     .welcome-title { font-size: 24px; }
     .welcome-desc { font-size: 11.5px; }
@@ -1314,77 +1376,62 @@ svg { display: block; }
 
 <div class="flying-bats-layer" aria-hidden="true">
     <div class="roaming-bat bat-one">
-        <svg viewBox="0 0 180 90" fill="none">
+        <svg viewBox="0 0 160 80" fill="none">
             <g class="flap-left">
-                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M74 42C52 16 24 10 4 24C18 30 26 40 24 52C38 42 52 46 58 56C66 48 70 44 74 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
             <g class="flap-right">
-                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M86 42C108 16 136 10 156 24C142 30 134 40 136 52C122 42 108 46 102 56C94 48 90 44 86 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
-            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
-            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
-            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M72 38L75 28L78 34H82L85 28L88 38C88 45 84 50 80 52C76 50 72 45 72 38Z" fill="#160F14" stroke="#D4AF37" stroke-width="1.5"/>
         </svg>
     </div>
 
     <div class="roaming-bat bat-two">
-        <svg viewBox="0 0 180 90" fill="none">
+        <svg viewBox="0 0 160 80" fill="none">
             <g class="flap-left">
-                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+                <path d="M74 42C52 16 24 10 4 24C18 30 26 40 24 52C38 42 52 46 58 56C66 48 70 44 74 44Z" fill="#160F14" stroke="#D4AF37" stroke-width="2"/>
             </g>
             <g class="flap-right">
-                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+                <path d="M86 42C108 16 136 10 156 24C142 30 134 40 136 52C122 42 108 46 102 56C94 48 90 44 86 44Z" fill="#160F14" stroke="#D4AF37" stroke-width="2"/>
             </g>
-            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
-            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
-            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M72 38L75 28L78 34H82L85 28L88 38C88 45 84 50 80 52C76 50 72 45 72 38Z" fill="#160F14" stroke="#DC2626" stroke-width="1.5"/>
         </svg>
     </div>
 
     <div class="roaming-bat bat-three">
-        <svg viewBox="0 0 180 90" fill="none">
+        <svg viewBox="0 0 160 80" fill="none">
             <g class="flap-left">
-                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M74 42C52 16 24 10 4 24C18 30 26 40 24 52C38 42 52 46 58 56C66 48 70 44 74 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
             <g class="flap-right">
-                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M86 42C108 16 136 10 156 24C142 30 134 40 136 52C122 42 108 46 102 56C94 48 90 44 86 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
-            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
-            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
-            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M72 38L75 28L78 34H82L85 28L88 38C88 45 84 50 80 52C76 50 72 45 72 38Z" fill="#160F14" stroke="#D4AF37" stroke-width="1.5"/>
         </svg>
     </div>
 
     <div class="roaming-bat bat-four">
-        <svg viewBox="0 0 180 90" fill="none">
+        <svg viewBox="0 0 160 80" fill="none">
             <g class="flap-left">
-                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+                <path d="M74 42C52 16 24 10 4 24C18 30 26 40 24 52C38 42 52 46 58 56C66 48 70 44 74 44Z" fill="#160F14" stroke="#D4AF37" stroke-width="2"/>
             </g>
             <g class="flap-right">
-                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+                <path d="M86 42C108 16 136 10 156 24C142 30 134 40 136 52C122 42 108 46 102 56C94 48 90 44 86 44Z" fill="#160F14" stroke="#D4AF37" stroke-width="2"/>
             </g>
-            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
-            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
-            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M72 38L75 28L78 34H82L85 28L88 38C88 45 84 50 80 52C76 50 72 45 72 38Z" fill="#160F14" stroke="#DC2626" stroke-width="1.5"/>
         </svg>
     </div>
 
     <div class="roaming-bat bat-five">
-        <svg viewBox="0 0 180 90" fill="none">
+        <svg viewBox="0 0 160 80" fill="none">
             <g class="flap-left">
-                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M74 42C52 16 24 10 4 24C18 30 26 40 24 52C38 42 52 46 58 56C66 48 70 44 74 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
             <g class="flap-right">
-                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+                <path d="M86 42C108 16 136 10 156 24C142 30 134 40 136 52C122 42 108 46 102 56C94 48 90 44 86 44Z" fill="#160F14" stroke="#DC2626" stroke-width="2"/>
             </g>
-            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
-            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
-            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M72 38L75 28L78 34H82L85 28L88 38C88 45 84 50 80 52C76 50 72 45 72 38Z" fill="#160F14" stroke="#D4AF37" stroke-width="1.5"/>
         </svg>
     </div>
 </div>
@@ -1416,47 +1463,168 @@ svg { display: block; }
                 </svg>
             </div>
 
-            <svg class="stage-illustration" viewBox="0 0 480 340" fill="none">
-                <ellipse cx="240" cy="322" rx="195" ry="14" fill="#2A0F18" opacity=".85"/>
-                <ellipse cx="245" cy="322" rx="135" ry="8" fill="#521625" opacity=".6"/>
+            <svg class="stage-illustration" viewBox="0 0 480 350" fill="none">
+                <ellipse cx="240" cy="332" rx="195" ry="15" fill="#2A0F18" opacity=".85"/>
+                <ellipse cx="245" cy="332" rx="135" ry="9" fill="#521625" opacity=".6"/>
 
-                <circle cx="240" cy="138" r="85" fill="#7F1D1D" opacity=".25"/>
-                <circle cx="240" cy="138" r="68" fill="#991B1B" opacity=".55"/>
-                <circle cx="240" cy="138" r="58" fill="#DC2626"/>
-                <circle cx="220" cy="118" r="12" fill="#991B1B" opacity=".55"/>
-                <circle cx="264" cy="154" r="15" fill="#991B1B" opacity=".45"/>
+                <g class="blood-moon">
+                    <circle cx="245" cy="120" r="92" fill="#7F1D1D" opacity=".28"/>
+                    <circle cx="245" cy="120" r="72" fill="#B91C1C" opacity=".85"/>
+                    <circle cx="245" cy="120" r="62" fill="#DC2626"/>
+                    <circle cx="222" cy="98" r="12" fill="#991B1B" opacity=".55"/>
+                    <circle cx="268" cy="134" r="16" fill="#991B1B" opacity=".45"/>
+                    <circle cx="235" cy="146" r="8" fill="#991B1B" opacity=".5"/>
+                </g>
 
-                <g class="chibi-deathbat">
-                    <path d="M164 125C132 88 88 74 44 92C66 104 80 118 76 132C98 120 116 124 124 136C138 124 150 122 164 126Z" fill="#140D12" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M316 125C348 88 392 74 436 92C414 104 400 118 404 132C382 120 364 124 356 136C342 124 330 122 316 126Z" fill="#140D12" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
+                <g class="tree-trunk">
+                    <path d="M74 328C72 275 78 232 92 184C104 142 122 108 152 78" stroke="#1E1419" stroke-width="20" stroke-linecap="round"/>
+                    <path d="M88 228C118 196 154 174 202 162" stroke="#1E1419" stroke-width="11" stroke-linecap="round"/>
+                    <path d="M106 155C88 130 64 112 36 104" stroke="#1E1419" stroke-width="8" stroke-linecap="round"/>
+                    <path d="M136 96C164 70 202 54 246 48" stroke="#1E1419" stroke-width="8" stroke-linecap="round"/>
+                </g>
 
-                    <path d="M180 112C180 94 190 84 205 84C220 84 230 94 230 112C230 121 225 128 222 133L220 142H208L206 133C203 128 198 121 198 112Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2"/>
-                    <circle cx="199" cy="113" r="3.2" fill="#DC2626"/>
-                    <circle cx="211" cy="113" r="3.2" fill="#DC2626"/>
+                <g class="tree-branch">
+                    <path d="M188 164C236 150 282 146 336 154" stroke="#1E1419" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M58 122C42 112 28 96 22 78" stroke="#1E1419" stroke-width="5" stroke-linecap="round"/>
+                </g>
 
-                    <path d="M260 112C260 94 270 84 285 84C300 84 310 94 310 112C310 121 305 128 302 133L300 142H288L286 133C283 128 278 121 278 112Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2"/>
-                    <circle cx="279" cy="113" r="3.2" fill="#DC2626"/>
-                    <circle cx="291" cy="113" r="3.2" fill="#DC2626"/>
+                <g class="flame-pop">
+                    <path d="M56 322C46 310 48 292 58 278C62 290 70 294 66 310C64 317 60 321 56 322Z" fill="#DC2626"/>
+                    <path d="M57 320C52 312 53 300 59 292C62 300 65 304 62 314Z" fill="#F59E0B"/>
+                </g>
 
-                    <path d="M222 108C220 86 233 74 250 74C267 74 280 86 278 108C278 118 273 126 268 131L264 148H236L232 131C227 126 222 118 222 108Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2.2" stroke-linejoin="round"/>
-                    <path d="M232 102C238 90 243 85 250 85C257 85 262 90 268 102" stroke="#C8B9C0" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="M250 78V94M240 82L246 92M260 82L254 92" stroke="#36222B" stroke-width="1.5" stroke-linecap="round"/>
+                <g class="flame-pop delay">
+                    <path d="M426 318C416 306 418 288 428 274C432 286 440 290 436 306C434 313 430 317 426 318Z" fill="#DC2626"/>
+                    <path d="M427 316C422 308 423 296 429 288C432 296 435 300 432 310Z" fill="#F59E0B"/>
+                </g>
 
-                    <path d="M232 111C235 104 245 104 248 111C245 118 235 118 232 111Z" fill="#160D11" stroke="#36222B" stroke-width="1.5"/>
-                    <path d="M252 111C255 104 265 104 268 111C265 118 255 118 252 111Z" fill="#160D11" stroke="#36222B" stroke-width="1.5"/>
-                    <g class="chibi-eye-glow">
-                        <circle cx="240" cy="111" r="3.2" fill="#DC2626"/>
-                        <circle cx="260" cy="111" r="3.2" fill="#DC2626"/>
-                        <circle cx="240" cy="111" r="1.2" fill="#FEF08A"/>
-                        <circle cx="260" cy="111" r="1.2" fill="#FEF08A"/>
+                <g class="chibi-girl-group">
+                    <ellipse cx="182" cy="331" rx="34" ry="6" fill="#090608" opacity=".7"/>
+
+                    <path d="M140 198C128 228 128 268 142 290C158 298 206 298 222 290C236 268 236 228 224 198Z" fill="#1C151B"/>
+
+                    <g class="girl-wave-left">
+                        <path d="M154 246C138 234 126 216 122 198" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="121" cy="195" r="7.5" fill="#FFE4D9"/>
+                        <path d="M116 190L114 179M126 190L128 179" stroke="#FFE4D9" stroke-width="3.4" stroke-linecap="round"/>
                     </g>
 
-                    <path d="M250 117L245 130H255L250 117Z" fill="#160D11"/>
-                    <path d="M236 127C240 134 246 136 250 139M264 127C260 134 254 136 250 139" stroke="#36222B" stroke-width="1.8" stroke-linecap="round"/>
+                    <g class="girl-wave-right">
+                        <path d="M210 246C224 234 234 218 238 200" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="239" cy="197" r="7.5" fill="#FFE4D9"/>
+                        <path d="M234 192L232 181M244 192L246 181" stroke="#FFE4D9" stroke-width="3.4" stroke-linecap="round"/>
+                    </g>
 
-                    <path d="M236 150H264V168H236V150Z" fill="#DCD0D5" stroke="#1A1015" stroke-width="2"/>
-                    <path d="M236 158H264" stroke="#1A1015" stroke-width="1.8"/>
-                    <path d="M241 150V168M247 150V168M253 150V168M259 150V168" stroke="#1A1015" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="164" y="292" width="12" height="32" rx="6" fill="#261C22"/>
+                    <rect x="188" y="292" width="12" height="32" rx="6" fill="#261C22"/>
+                    <rect x="158" y="317" width="20" height="11" rx="5.5" fill="#0F0B0D"/>
+                    <rect x="186" y="317" width="20" height="11" rx="5.5" fill="#0F0B0D"/>
+
+                    <path d="M154 242C160 232 204 232 210 242L222 302H142L154 242Z" fill="#1F171E"/>
+                    <path d="M166 240H198L204 302H160L166 240Z" fill="#991B1B"/>
+                    <path d="M172 246L192 260M192 246L172 260M170 268L194 282M194 268L170 282" stroke="#181115" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M140 302Q182 310 224 302" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+
+                    <rect x="175" y="226" width="14" height="15" rx="6" fill="#FFE4D9"/>
+                    <rect x="174" y="232" width="16" height="4" rx="2" fill="#181115"/>
+
+                    <g class="girl-head">
+                        <path d="M140 182C122 170 114 190 128 202L144 192Z" fill="#DC2626"/>
+                        <path d="M224 182C242 170 250 190 236 202L220 192Z" fill="#DC2626"/>
+
+                        <rect x="138" y="152" width="88" height="80" rx="39" fill="#FFE4D9"/>
+
+                        <path d="M138 190C134 214 137 236 145 248" stroke="#1C151B" stroke-width="11" stroke-linecap="round"/>
+                        <path d="M226 190C230 214 227 236 219 248" stroke="#1C151B" stroke-width="11" stroke-linecap="round"/>
+
+                        <ellipse cx="155" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".55"/>
+                        <ellipse cx="209" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".55"/>
+
+                        <g class="anime-eye">
+                            <ellipse cx="162" cy="193" rx="8.5" ry="10.5" fill="#1E1419"/>
+                            <ellipse cx="162" cy="195" rx="6" ry="7" fill="#B91C1C"/>
+                            <circle cx="159" cy="189" r="3.2" fill="#FFFFFF"/>
+                            <circle cx="165" cy="198" r="1.6" fill="#FFFFFF"/>
+                            <path d="M151 182C156 178 167 178 172 182" stroke="#1E1419" stroke-width="2.6" stroke-linecap="round"/>
+                        </g>
+
+                        <g class="anime-eye">
+                            <ellipse cx="202" cy="193" rx="8.5" ry="10.5" fill="#1E1419"/>
+                            <ellipse cx="202" cy="195" rx="6" ry="7" fill="#B91C1C"/>
+                            <circle cx="199" cy="189" r="3.2" fill="#FFFFFF"/>
+                            <circle cx="205" cy="198" r="1.6" fill="#FFFFFF"/>
+                            <path d="M192 182C197 178 208 178 213 182" stroke="#1E1419" stroke-width="2.6" stroke-linecap="round"/>
+                        </g>
+
+                        <path d="M176 208C179 213 185 213 188 208" stroke="#991B1B" stroke-width="2.6" stroke-linecap="round"/>
+
+                        <path d="M135 188C135 154 156 142 182 142C208 142 229 154 229 188C219 172 208 167 199 179C190 163 174 163 165 179C156 167 145 172 135 188Z" fill="#1C151B"/>
+
+                        <circle cx="215" cy="166" r="7" fill="#DC2626"/>
+                        <circle cx="215" cy="166" r="2.8" fill="#D4AF37"/>
+                    </g>
+                </g>
+
+                <g class="chibi-boy-group">
+                    <ellipse cx="304" cy="331" rx="34" ry="6" fill="#090608" opacity=".7"/>
+
+                    <g class="boy-wave-left">
+                        <path d="M276 246C262 234 252 218 248 200" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="247" cy="197" r="7.5" fill="#FFE4D9"/>
+                        <path d="M242 192L240 181M252 192L254 181" stroke="#FFE4D9" stroke-width="3.4" stroke-linecap="round"/>
+                    </g>
+
+                    <g class="boy-wave-right">
+                        <path d="M332 246C348 232 360 212 362 192" stroke="#FFE4D9" stroke-width="12" stroke-linecap="round"/>
+                        <circle cx="362" cy="189" r="7.5" fill="#FFE4D9"/>
+                        <path d="M357 184L355 173M367 184L369 173" stroke="#FFE4D9" stroke-width="3.4" stroke-linecap="round"/>
+                    </g>
+
+                    <rect x="286" y="292" width="13" height="32" rx="6.5" fill="#1C1921"/>
+                    <rect x="309" y="292" width="13" height="32" rx="6.5" fill="#1C1921"/>
+                    <rect x="280" y="317" width="21" height="11" rx="5.5" fill="#0D0B0E"/>
+                    <rect x="307" y="317" width="21" height="11" rx="5.5" fill="#0D0B0E"/>
+
+                    <path d="M274 242C280 232 328 232 334 242L340 296H268L274 242Z" fill="#1A161D"/>
+                    <path d="M290 238H318L322 296H286L290 238Z" fill="#2A1219"/>
+                    <path d="M296 254L304 245L312 254L304 268Z" fill="#D4AF37"/>
+                    <path d="M284 238L304 256L324 238" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <rect x="297" y="226" width="14" height="15" rx="6" fill="#FFE4D9"/>
+
+                    <g class="boy-head">
+                        <path d="M258 186C258 150 278 138 304 138C330 138 350 150 350 186C346 202 338 212 330 216H278C270 212 262 202 258 186Z" fill="#18131A"/>
+
+                        <rect x="260" y="152" width="88" height="80" rx="39" fill="#FFE4D9"/>
+
+                        <ellipse cx="277" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".5"/>
+                        <ellipse cx="331" cy="206" rx="8.5" ry="5" fill="#F87171" opacity=".5"/>
+
+                        <g class="anime-eye">
+                            <ellipse cx="284" cy="193" rx="8.5" ry="10" fill="#1E1419"/>
+                            <ellipse cx="284" cy="195" rx="5.8" ry="6.8" fill="#991B1B"/>
+                            <circle cx="281" cy="189" r="3.1" fill="#FFFFFF"/>
+                            <circle cx="287" cy="198" r="1.5" fill="#FFFFFF"/>
+                            <path d="M273 181C278 177 289 177 294 181" stroke="#1E1419" stroke-width="2.8" stroke-linecap="round"/>
+                        </g>
+
+                        <g class="anime-eye">
+                            <ellipse cx="324" cy="193" rx="8.5" ry="10" fill="#1E1419"/>
+                            <ellipse cx="324" cy="195" rx="5.8" ry="6.8" fill="#991B1B"/>
+                            <circle cx="321" cy="189" r="3.1" fill="#FFFFFF"/>
+                            <circle cx="327" cy="198" r="1.5" fill="#FFFFFF"/>
+                            <path d="M314 181C319 177 330 177 335 181" stroke="#1E1419" stroke-width="2.8" stroke-linecap="round"/>
+                        </g>
+
+                        <path d="M297 207C301 213 308 213 312 207" stroke="#991B1B" stroke-width="2.6" stroke-linecap="round"/>
+
+                        <path d="M256 186C256 150 278 136 304 136C330 136 352 150 352 186C340 168 328 164 318 178C310 160 294 160 284 178C274 164 264 168 256 186Z" fill="#18131A"/>
+                        <path d="M262 162C286 152 322 152 346 162" stroke="#B91C1C" stroke-width="7" stroke-linecap="round"/>
+                    </g>
+                </g>
+
+                <g class="flame-pop">
+                    <path d="M244 152L247 160L255 163L247 166L244 174L241 166L233 163L241 160L244 152Z" fill="#D4AF37"/>
                 </g>
             </svg>
         </div>
@@ -1466,17 +1634,17 @@ svg { display: block; }
         </h1>
 
         <p class="welcome-desc">
-            Pilih metode pembayaran favoritmu, salin nomor atau pindai QRIS dengan cepat dan praktis.
+            Pindai kode QRIS dan hitung nominal pembayaranmu dengan cepat dan praktis.
         </p>
 
         <div class="welcome-steps">
             <div class="welcome-step">
                 <span class="welcome-step-num">01</span>
-                <span class="welcome-step-text">Pilih Metode</span>
+                <span class="welcome-step-text">Hitung Nominal</span>
             </div>
             <div class="welcome-step">
                 <span class="welcome-step-num">02</span>
-                <span class="welcome-step-text">Transfer / Scan</span>
+                <span class="welcome-step-text">Scan QRIS</span>
             </div>
             <div class="welcome-step">
                 <span class="welcome-step-num">03</span>
@@ -1549,11 +1717,10 @@ svg { display: block; }
                 </svg>
             </div>
             <div>
-                <h3>Pemberitahuan Transfer Bank</h3>
+                <h3>Panduan Pembayaran QRIS</h3>
                 <p>
-                    Apabila Anda melakukan pembayaran melalui rekening <strong>Bank (Mobile Banking / ATM)</strong>,
-                    mohon gunakan metode <button type="button" id="noticeQris">QRIS</button> dan
-                    <strong>pastikan nominal sudah sesuai</strong>.
+                    Mendukung seluruh rekening <strong>Bank (Mobile Banking)</strong> maupun <strong>E-Wallet</strong>.
+                    Silakan hitung nominal pada kalkulator <button type="button" id="noticeQris">QRIS</button> di bawah sebelum melakukan pemindaian.
                 </p>
             </div>
         </div>
@@ -1583,7 +1750,7 @@ svg { display: block; }
                 </div>
             </div>
 
-            <div class="qris-content open" id="qrisContent">
+            <div class="qris-content" id="qrisContent">
                 <div class="qris-content-inner">
                     <div class="qris-body">
 
@@ -2129,7 +2296,6 @@ document.addEventListener("keydown", event => {
 });
 
 $("footerYear").textContent = new Date().getFullYear();
-$("qrisContent").inert = false;
 
 createSakuraPetals();
 loadData();
