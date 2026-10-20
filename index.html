@@ -1458,8 +1458,8 @@ svg { display: block; }
     <span id="toastText"></span>
 </div>
 
-<!-- Audio tetap menyala meskipun berpindah halaman -->
-<audio id="bgAudio" loop></audio>
+<!-- Audio preloaded dan autoplay agar langsung berputar tanpa delay -->
+<audio id="bgAudio" loop preload="auto" autoplay></audio>
 
 <section class="container welcome-screen page-view" id="welcomePage">
     <div class="welcome-card">
@@ -2071,11 +2071,23 @@ function renderQris() {
     image.src = source;
 }
 
+function updateMusicButtonUI() {
+    const audio = $("bgAudio");
+    const playIcon = $("musicPlayIcon");
+    const pauseIcon = $("musicPauseIcon");
+
+    if (!audio.paused) {
+        playIcon.hidden = true;
+        pauseIcon.hidden = false;
+    } else {
+        playIcon.hidden = false;
+        pauseIcon.hidden = true;
+    }
+}
+
 function setupAudioPlayer() {
     const audio = $("bgAudio");
     const toggleBtn = $("musicToggleBtn");
-    const playIcon = $("musicPlayIcon");
-    const pauseIcon = $("musicPauseIcon");
 
     if (!config || !config.audioUrl) {
         audio.src = "";
@@ -2083,6 +2095,8 @@ function setupAudioPlayer() {
     }
 
     audio.src = config.audioUrl;
+    audio.load();
+
     $("musicTitle").textContent = config.songTitle || "Victim";
     $("musicArtist").textContent = config.songArtist || "Avenged Sevenfold";
 
@@ -2092,19 +2106,46 @@ function setupAudioPlayer() {
         artImg.hidden = false;
     }
 
+    audio.addEventListener("play", updateMusicButtonUI);
+    audio.addEventListener("pause", updateMusicButtonUI);
+
+    // Langsung coba putar otomatis saat halaman dibuka
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            updateMusicButtonUI();
+        }).catch(() => {
+            // Jika ditahan kebijakan autoplay browser, langsung putar saat layar disentuh pertama kali
+            const unlockEvents = ["click", "touchend", "keydown"];
+            const unlockAudio = event => {
+                if (event.target && event.target.closest && event.target.closest("#musicToggleBtn")) {
+                    unlockEvents.forEach(evt => document.removeEventListener(evt, unlockAudio, true));
+                    return;
+                }
+                audio.play().then(() => {
+                    updateMusicButtonUI();
+                    unlockEvents.forEach(evt => document.removeEventListener(evt, unlockAudio, true));
+                }).catch(() => {});
+            };
+
+            unlockEvents.forEach(evt => {
+                document.addEventListener(evt, unlockAudio, { capture: true, passive: true });
+            });
+        });
+    }
+
     toggleBtn.onclick = () => {
         if (audio.paused) {
             audio.play().then(() => {
-                playIcon.hidden = true;
-                pauseIcon.hidden = false;
+                updateMusicButtonUI();
                 showToast("Memutar lagu: " + (config.songTitle || "Victim"));
             }).catch(() => {
-                showToast("Gagal memutar audio otomatis.");
+                showToast("Gagal memutar audio.");
             });
         } else {
             audio.pause();
-            playIcon.hidden = false;
-            pauseIcon.hidden = true;
+            updateMusicButtonUI();
             showToast("Musik dijeda.");
         }
     };
@@ -2337,3 +2378,4 @@ loadData();
 </script>
 </body>
 </html>
+
