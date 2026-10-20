@@ -1,12 +1,11 @@
 {
   "namaToko": "DND Store",
-  "namaPenerima": "Irfianti Devika Sari",
-  "deskripsi": "Silakan pilih metode pembayaran resmi DND Store dan pastikan inisial nama penerima sudah sesuai sebelum menyelesaikan transaksi.",
-  "dana": "085706066005",
-  "gopay": "085706066005",
-  "shopeepay": "0882010390196",
-  "whatsapp": "628568956505",
+  "whatsapp": "628568956506",
   "qrisImage": "./qris.png",
+  "songTitle": "Nightmare",
+  "songArtist": "Avenged Sevenfold",
+  "audioUrl": "./nightmare.mp3",
+  "albumArt": "./album.jpg",
   "batasBiaya": 499000,
   "persenBiaya": 1
 }
