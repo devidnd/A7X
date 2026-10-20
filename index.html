@@ -134,88 +134,93 @@ svg { display: block; }
 }
 
 .roaming-bat.bat-one {
-    top: 11%;
+    top: 8%;
     left: -150px;
-    animation: flyLeftToRightA 13s linear infinite;
+    animation: flyLeftToRightA 12s linear infinite;
 }
 
 .roaming-bat.bat-two {
-    top: 28%;
+    top: 22%;
     left: -150px;
-    width: 96px;
-    height: 52px;
-    animation: flyRightToLeft 16s linear -5s infinite;
+    width: 95px;
+    height: 51px;
+    animation: flyRightToLeftA 15s linear -3s infinite;
 }
 
 .roaming-bat.bat-three {
-    top: 62%;
+    top: 45%;
     left: -150px;
-    width: 84px;
-    height: 45px;
-    animation: flyLeftToRightB 19s linear -9s infinite;
+    width: 85px;
+    height: 46px;
+    animation: flyLeftToRightB 17s linear -7s infinite;
+}
+
+.roaming-bat.bat-four {
+    top: 68%;
+    left: -150px;
+    width: 102px;
+    height: 55px;
+    animation: flyRightToLeftB 14s linear -2s infinite;
+}
+
+.roaming-bat.bat-five {
+    top: 85%;
+    left: -150px;
+    width: 78px;
+    height: 42px;
+    animation: flyLeftToRightC 20s linear -10s infinite;
 }
 
 @keyframes flyLeftToRightA {
-    0% {
-        transform: translate3d(-10vw,20px,0) scale(.88) rotate(5deg);
-        opacity: 0;
-    }
+    0% { transform: translate3d(-10vw,15px,0) scale(.88) rotate(4deg); opacity: 0; }
     8% { opacity: .92; }
-    50% {
-        transform: translate3d(55vw,-32px,0) scale(1) rotate(-4deg);
-        opacity: .95;
-    }
+    50% { transform: translate3d(55vw,-25px,0) scale(1) rotate(-4deg); opacity: .95; }
     92% { opacity: .92; }
-    100% {
-        transform: translate3d(118vw,14px,0) scale(.9) rotate(4deg);
-        opacity: 0;
-    }
+    100% { transform: translate3d(118vw,10px,0) scale(.9) rotate(4deg); opacity: 0; }
 }
 
-@keyframes flyRightToLeft {
-    0% {
-        transform: translate3d(118vw,-18px,0) scaleX(-1) scale(.92) rotate(-4deg);
-        opacity: 0;
-    }
+@keyframes flyRightToLeftA {
+    0% { transform: translate3d(118vw,-15px,0) scaleX(-1) scale(.9) rotate(-4deg); opacity: 0; }
     8% { opacity: .88; }
-    50% {
-        transform: translate3d(48vw,28px,0) scaleX(-1) scale(.82) rotate(5deg);
-        opacity: .9;
-    }
+    50% { transform: translate3d(48vw,22px,0) scaleX(-1) scale(.8) rotate(5deg); opacity: .9; }
     92% { opacity: .88; }
-    100% {
-        transform: translate3d(-15vw,-22px,0) scaleX(-1) scale(.9) rotate(-4deg);
-        opacity: 0;
-    }
+    100% { transform: translate3d(-15vw,-18px,0) scaleX(-1) scale(.9) rotate(-4deg); opacity: 0; }
 }
 
 @keyframes flyLeftToRightB {
-    0% {
-        transform: translate3d(-12vw,35px,0) scale(.76) rotate(-6deg);
-        opacity: 0;
-    }
+    0% { transform: translate3d(-12vw,30px,0) scale(.75) rotate(-5deg); opacity: 0; }
+    10% { opacity: .85; }
+    50% { transform: translate3d(52vw,-20px,0) scale(.85) rotate(3deg); opacity: .88; }
+    90% { opacity: .85; }
+    100% { transform: translate3d(118vw,-40px,0) scale(.78) rotate(-4deg); opacity: 0; }
+}
+
+@keyframes flyRightToLeftB {
+    0% { transform: translate3d(118vw,25px,0) scaleX(-1) scale(.85) rotate(5deg); opacity: 0; }
+    10% { opacity: .88; }
+    50% { transform: translate3d(50vw,-30px,0) scaleX(-1) scale(.78) rotate(-4deg); opacity: .9; }
+    90% { opacity: .88; }
+    100% { transform: translate3d(-15vw,15px,0) scaleX(-1) scale(.85) rotate(5deg); opacity: 0; }
+}
+
+@keyframes flyLeftToRightC {
+    0% { transform: translate3d(-12vw,-10px,0) scale(.7) rotate(6deg); opacity: 0; }
     10% { opacity: .8; }
-    50% {
-        transform: translate3d(52vw,-24px,0) scale(.86) rotate(3deg);
-        opacity: .85;
-    }
+    50% { transform: translate3d(55vw,25px,0) scale(.8) rotate(-3deg); opacity: .85; }
     90% { opacity: .8; }
-    100% {
-        transform: translate3d(118vw,-50px,0) scale(.78) rotate(-5deg);
-        opacity: 0;
-    }
+    100% { transform: translate3d(118vw,-15px,0) scale(.72) rotate(4deg); opacity: 0; }
 }
 
 .flap-left {
     transform-box: fill-box;
     transform-origin: right center;
-    animation: fastWingLeft .36s ease-in-out infinite alternate;
+    animation: fastWingLeft .35s ease-in-out infinite alternate;
 }
 
 .flap-right {
     transform-box: fill-box;
     transform-origin: left center;
-    animation: fastWingRight .36s ease-in-out infinite alternate;
+    animation: fastWingRight .35s ease-in-out infinite alternate;
 }
 
 @keyframes fastWingLeft {
@@ -296,7 +301,7 @@ svg { display: block; }
 .sakura-stage {
     position: relative;
     width: min(100%,490px);
-    height: 340px;
+    height: 335px;
     margin: 10px auto 6px;
     display: flex;
     align-items: flex-end;
@@ -309,43 +314,79 @@ svg { display: block; }
     overflow: visible;
 }
 
-.stage-bat-one {
+.chibi-deathbat {
     transform-box: fill-box;
     transform-origin: center;
-    animation: stageSweepOne 6.5s ease-in-out infinite;
+    animation: chibiBatFloat 3.2s ease-in-out infinite;
 }
 
-.stage-bat-two {
+@keyframes chibiBatFloat {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-7px) scale(1.03); }
+}
+
+.chibi-wing-left {
+    transform-box: fill-box;
+    transform-origin: right center;
+    animation: chibiWingL 1.6s ease-in-out infinite alternate;
+}
+
+.chibi-wing-right {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: chibiWingR 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes chibiWingL {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(14deg); }
+}
+
+@keyframes chibiWingR {
+    0% { transform: rotate(10deg); }
+    100% { transform: rotate(-14deg); }
+}
+
+.chibi-eye-glow {
     transform-box: fill-box;
     transform-origin: center;
-    animation: stageSweepTwo 7.5s ease-in-out -2.2s infinite;
+    animation: eyeGlowPulse 2.2s ease-in-out infinite alternate;
 }
 
-.stage-bat-three {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: stageSweepThree 5.8s ease-in-out -4s infinite;
+@keyframes eyeGlowPulse {
+    0% { opacity: .75; transform: scale(.95); }
+    100% { opacity: 1; transform: scale(1.15); }
 }
 
-@keyframes stageSweepOne {
-    0% { transform: translate(-40px,18px) scale(.75) rotate(-8deg); opacity: 0; }
-    20% { opacity: .95; }
-    80% { opacity: .95; }
-    100% { transform: translate(430px,-28px) scale(.95) rotate(8deg); opacity: 0; }
+.speech-hai {
+    position: absolute;
+    top: 55px;
+    right: 28px;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1.5px solid var(--crimson-500);
+    border-radius: 18px 18px 18px 4px;
+    background: #1C1217;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    box-shadow: 0 8px 22px rgba(220,38,38,.28);
+    animation: speechFloat 2.8s ease-in-out infinite;
 }
 
-@keyframes stageSweepTwo {
-    0% { transform: translate(430px,10px) scaleX(-1) scale(.8) rotate(6deg); opacity: 0; }
-    20% { opacity: .9; }
-    80% { opacity: .9; }
-    100% { transform: translate(-45px,-34px) scaleX(-1) scale(.92) rotate(-7deg); opacity: 0; }
+.speech-hai svg {
+    width: 15px;
+    height: 15px;
+    color: var(--gold);
 }
 
-@keyframes stageSweepThree {
-    0% { transform: translate(-35px,-20px) scale(.68) rotate(5deg); opacity: 0; }
-    20% { opacity: .88; }
-    80% { opacity: .88; }
-    100% { transform: translate(430px,22px) scale(.82) rotate(-6deg); opacity: 0; }
+@keyframes speechFloat {
+    0%,100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-6px) rotate(3deg); }
 }
 
 .welcome-title {
@@ -656,26 +697,25 @@ svg { display: block; }
     font-weight: 700;
 }
 
-.method-list {
-    display: grid;
-    gap: 12px;
+.qris-card {
+    margin-top: 16px;
+    border-radius: 18px;
+    border: 1.5px solid var(--crimson-300);
+    background: var(--panel-soft);
+    overflow: hidden;
+    scroll-margin-top: 16px;
 }
 
-.method-card {
+.qris-trigger {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 15px;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: var(--panel-soft);
-    transition: transform .2s,border .2s,box-shadow .2s;
-}
-
-.method-card:hover {
-    border-color: var(--crimson-400);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,.45);
+    padding: 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    color: var(--ink);
 }
 
 .method-logo {
@@ -687,13 +727,6 @@ svg { display: block; }
     height: 52px;
     padding: 6px 10px;
     border-radius: 13px;
-}
-
-.method-logo.dana { background: #118EEA; }
-.method-logo.gopay { background: #00AED6; }
-.method-logo.shopeepay { background: #EE4D2D; }
-
-.method-logo.qris {
     background: #FFFFFF;
     border: 1px solid #4A2532;
 }
@@ -704,7 +737,10 @@ svg { display: block; }
 }
 
 .method-detail strong {
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
     font-size: 14px;
     font-weight: 700;
 }
@@ -714,62 +750,6 @@ svg { display: block; }
     font-size: 11px;
     line-height: 1.5;
     color: var(--muted);
-}
-
-.copy-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    flex-shrink: 0;
-    padding: 11px 15px;
-    border: 1px solid #EF4444;
-    border-radius: 12px;
-    background: linear-gradient(135deg,#DC2626,#991B1B);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    transition: background .2s,transform .2s;
-}
-
-.copy-button:hover:not(:disabled) {
-    background: linear-gradient(135deg,#EF4444,#B91C1C);
-    transform: translateY(-2px);
-}
-
-.copy-button.success {
-    background: #15803D;
-    border-color: #22C55E;
-}
-
-.copy-button svg { width: 15px; height: 15px; }
-
-.qris-card {
-    margin-top: 12px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: var(--panel-soft);
-    overflow: hidden;
-    scroll-margin-top: 16px;
-}
-
-.qris-trigger {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 15px;
-    border: none;
-    background: none;
-    text-align: left;
-    color: var(--ink);
-}
-
-.qris-trigger .method-detail strong {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
 }
 
 .recommended {
@@ -1248,7 +1228,7 @@ svg { display: block; }
 
     .sakura-stage {
         width: 100%;
-        height: 270px;
+        height: 275px;
         margin: 8px auto 4px;
     }
 
@@ -1287,10 +1267,9 @@ svg { display: block; }
 
     .recipient h2 { font-size: 15px; }
 
-    .method-card,
     .qris-trigger {
-        gap: 9px;
-        padding: 12px;
+        padding: 13px;
+        gap: 10px;
     }
 
     .method-logo {
@@ -1301,17 +1280,6 @@ svg { display: block; }
 
     .method-detail strong { font-size: 12px; }
     .method-detail p { font-size: 10px; }
-
-    .copy-button {
-        padding: 10px 9px;
-        gap: 5px;
-        font-size: 10px;
-    }
-
-    .copy-button svg {
-        width: 13px;
-        height: 13px;
-    }
 
     .recommended { font-size: 9px; }
 
@@ -1327,7 +1295,6 @@ svg { display: block; }
 }
 
 @media (max-width:360px) {
-    .copy-button span { display: none; }
     .method-logo { width: 58px; }
     .section-tag { display: none; }
 }
@@ -1350,16 +1317,13 @@ svg { display: block; }
         <svg viewBox="0 0 180 90" fill="none">
             <g class="flap-left">
                 <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
-                <path d="M70 40C48 26 26 24 8 30" stroke="#D4AF37" stroke-width="1.4" opacity=".75"/>
             </g>
             <g class="flap-right">
                 <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
-                <path d="M110 40C132 26 154 24 172 30" stroke="#D4AF37" stroke-width="1.4" opacity=".75"/>
             </g>
             <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
             <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
             <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
-            <path d="M90 44L88 49H92L90 44Z" fill="#1B1116"/>
             <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
     </div>
@@ -1380,6 +1344,36 @@ svg { display: block; }
     </div>
 
     <div class="roaming-bat bat-three">
+        <svg viewBox="0 0 180 90" fill="none">
+            <g class="flap-left">
+                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+            </g>
+            <g class="flap-right">
+                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
+            </g>
+            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
+            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
+            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
+            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <div class="roaming-bat bat-four">
+        <svg viewBox="0 0 180 90" fill="none">
+            <g class="flap-left">
+                <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+            </g>
+            <g class="flap-right">
+                <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2"/>
+            </g>
+            <path d="M75 38C75 26 81 20 90 20C99 20 105 26 105 38C105 45 101 50 98 54L96 63H84L82 54C79 50 75 45 75 38Z" fill="#E7E0E3" stroke="#1B1116" stroke-width="2"/>
+            <circle cx="84" cy="39" r="3.8" fill="#DC2626"/>
+            <circle cx="96" cy="39" r="3.8" fill="#DC2626"/>
+            <path d="M86 56V62M90 56V62M94 56V62" stroke="#1B1116" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <div class="roaming-bat bat-five">
         <svg viewBox="0 0 180 90" fill="none">
             <g class="flap-left">
                 <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2"/>
@@ -1415,100 +1409,54 @@ svg { display: block; }
 
         <div class="sakura-stage" aria-hidden="true">
 
-            <svg class="stage-illustration" viewBox="0 0 500 340" fill="none">
-                <ellipse cx="250" cy="322" rx="205" ry="14" fill="#2A0F18" opacity=".88"/>
-                <ellipse cx="250" cy="322" rx="140" ry="8" fill="#521625" opacity=".65"/>
+            <div class="speech-hai">
+                <span>Rock On!</span>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13 2L4 14h7l-2 8 11-12h-7l2-8z"/>
+                </svg>
+            </div>
 
-                <circle cx="250" cy="150" r="118" fill="#7F1D1D" opacity=".24"/>
-                <circle cx="250" cy="150" r="92" fill="#991B1B" opacity=".55"/>
-                <circle cx="250" cy="150" r="78" fill="#DC2626"/>
-                <circle cx="222" cy="122" r="14" fill="#991B1B" opacity=".55"/>
-                <circle cx="278" cy="168" r="18" fill="#991B1B" opacity=".45"/>
-                <circle cx="238" cy="186" r="10" fill="#991B1B" opacity=".5"/>
+            <svg class="stage-illustration" viewBox="0 0 480 340" fill="none">
+                <ellipse cx="240" cy="322" rx="195" ry="14" fill="#2A0F18" opacity=".85"/>
+                <ellipse cx="245" cy="322" rx="135" ry="8" fill="#521625" opacity=".6"/>
 
-                <path d="M62 320C60 268 66 224 80 176C92 134 110 100 138 72" stroke="#1A1116" stroke-width="18" stroke-linecap="round"/>
-                <path d="M76 224C104 192 138 172 182 160" stroke="#1A1116" stroke-width="10" stroke-linecap="round"/>
-                <path d="M92 152C76 128 54 110 28 102" stroke="#1A1116" stroke-width="7" stroke-linecap="round"/>
-                <path d="M438 320C440 272 434 230 422 186C410 146 394 114 368 88" stroke="#1A1116" stroke-width="16" stroke-linecap="round"/>
-                <path d="M424 226C398 198 368 180 328 168" stroke="#1A1116" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="240" cy="138" r="85" fill="#7F1D1D" opacity=".25"/>
+                <circle cx="240" cy="138" r="68" fill="#991B1B" opacity=".55"/>
+                <circle cx="240" cy="138" r="58" fill="#DC2626"/>
+                <circle cx="220" cy="118" r="12" fill="#991B1B" opacity=".55"/>
+                <circle cx="264" cy="154" r="15" fill="#991B1B" opacity=".45"/>
 
-                <path d="M188 322L204 242H296L312 322H188Z" fill="#171116" stroke="#3B232E" stroke-width="2"/>
-                <path d="M174 322H326" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
-                <path d="M214 262H286M222 284H278" stroke="#2D1B24" stroke-width="2" stroke-linecap="round"/>
+                <g class="chibi-deathbat">
+                    <path d="M164 125C132 88 88 74 44 92C66 104 80 118 76 132C98 120 116 124 124 136C138 124 150 122 164 126Z" fill="#140D12" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M316 125C348 88 392 74 436 92C414 104 400 118 404 132C382 120 364 124 356 136C342 124 330 122 316 126Z" fill="#140D12" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round"/>
 
-                <g id="originalStaticDeathbat">
-                    <path d="M198 162C146 102 74 78 12 106C46 124 66 150 58 184C92 162 122 168 138 194C158 172 178 168 198 176Z" fill="#110C10" stroke="#D4AF37" stroke-width="2.6" stroke-linejoin="round"/>
-                    <path d="M192 152C148 118 92 108 38 120" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round"/>
-                    <path d="M188 162C152 138 112 134 68 154" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M192 168C166 154 144 156 128 176" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M12 106L22 92L32 104" fill="#D4AF37"/>
+                    <path d="M180 112C180 94 190 84 205 84C220 84 230 94 230 112C230 121 225 128 222 133L220 142H208L206 133C203 128 198 121 198 112Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2"/>
+                    <circle cx="199" cy="113" r="3.2" fill="#DC2626"/>
+                    <circle cx="211" cy="113" r="3.2" fill="#DC2626"/>
 
-                    <path d="M302 162C354 102 426 78 488 106C454 124 434 150 442 184C408 162 378 168 362 194C342 172 322 168 302 176Z" fill="#110C10" stroke="#D4AF37" stroke-width="2.6" stroke-linejoin="round"/>
-                    <path d="M308 152C352 118 408 108 462 120" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round"/>
-                    <path d="M312 162C348 138 388 134 432 154" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M308 168C334 154 356 156 372 176" stroke="#7F1D1D" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M488 106L478 92L468 104" fill="#D4AF37"/>
+                    <path d="M260 112C260 94 270 84 285 84C300 84 310 94 310 112C310 121 305 128 302 133L300 142H288L286 133C283 128 278 121 278 112Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2"/>
+                    <circle cx="279" cy="113" r="3.2" fill="#DC2626"/>
+                    <circle cx="291" cy="113" r="3.2" fill="#DC2626"/>
 
-                    <path d="M204 142C204 110 222 92 250 92C278 92 296 110 296 142C296 158 289 170 280 177L275 194L266 218H234L225 194L220 177C211 170 204 158 204 142Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="3" stroke-linejoin="round"/>
-                    <path d="M214 134C222 112 235 102 250 102C265 102 278 112 286 134" stroke="#C8B9C0" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M250 94V116M236 100L244 114M264 100L256 114" stroke="#36222B" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M222 108C220 86 233 74 250 74C267 74 280 86 278 108C278 118 273 126 268 131L264 148H236L232 131C227 126 222 118 222 108Z" fill="#EFE8EB" stroke="#1A1015" stroke-width="2.2" stroke-linejoin="round"/>
+                    <path d="M232 102C238 90 243 85 250 85C257 85 262 90 268 102" stroke="#C8B9C0" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M250 78V94M240 82L246 92M260 82L254 92" stroke="#36222B" stroke-width="1.5" stroke-linecap="round"/>
 
-                    <path d="M218 144C222 134 236 134 242 144C238 154 222 154 218 144Z" fill="#160D11" stroke="#36222B" stroke-width="2"/>
-                    <path d="M258 144C264 134 278 134 282 144C278 154 262 154 258 144Z" fill="#160D11" stroke="#36222B" stroke-width="2"/>
-                    <circle cx="230" cy="144" r="4.5" fill="#DC2626"/>
-                    <circle cx="270" cy="144" r="4.5" fill="#DC2626"/>
-                    <circle cx="230" cy="144" r="1.8" fill="#FEF08A"/>
-                    <circle cx="270" cy="144" r="1.8" fill="#FEF08A"/>
-
-                    <path d="M250 152L242 170H258L250 152Z" fill="#160D11"/>
-
-                    <path d="M216 164C222 174 230 178 236 182M284 164C278 174 270 178 264 182" stroke="#36222B" stroke-width="2.2" stroke-linecap="round"/>
-
-                    <path d="M232 188H268V208H232V188Z" fill="#DCD0D5" stroke="#1A1015" stroke-width="2.2"/>
-                    <path d="M232 198H268" stroke="#1A1015" stroke-width="2.2"/>
-                    <path d="M239 188V208M246 188V208M254 188V208M261 188V208" stroke="#1A1015" stroke-width="2"/>
-                </g>
-
-                <g class="stage-bat-one">
-                    <g transform="translate(20, 38) scale(0.55)">
-                        <g class="flap-left">
-                            <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2.4"/>
-                        </g>
-                        <g class="flap-right">
-                            <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2.4"/>
-                        </g>
-                        <circle cx="90" cy="40" r="14" fill="#EFE8EB" stroke="#1A1015" stroke-width="2.4"/>
-                        <circle cx="85" cy="39" r="3" fill="#DC2626"/>
-                        <circle cx="95" cy="39" r="3" fill="#DC2626"/>
+                    <path d="M232 111C235 104 245 104 248 111C245 118 235 118 232 111Z" fill="#160D11" stroke="#36222B" stroke-width="1.5"/>
+                    <path d="M252 111C255 104 265 104 268 111C265 118 255 118 252 111Z" fill="#160D11" stroke="#36222B" stroke-width="1.5"/>
+                    <g class="chibi-eye-glow">
+                        <circle cx="240" cy="111" r="3.2" fill="#DC2626"/>
+                        <circle cx="260" cy="111" r="3.2" fill="#DC2626"/>
+                        <circle cx="240" cy="111" r="1.2" fill="#FEF08A"/>
+                        <circle cx="260" cy="111" r="1.2" fill="#FEF08A"/>
                     </g>
-                </g>
 
-                <g class="stage-bat-two">
-                    <g transform="translate(20, 68) scale(0.48)">
-                        <g class="flap-left">
-                            <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2.4"/>
-                        </g>
-                        <g class="flap-right">
-                            <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#DC2626" stroke-width="2.4"/>
-                        </g>
-                        <circle cx="90" cy="40" r="14" fill="#EFE8EB" stroke="#1A1015" stroke-width="2.4"/>
-                        <circle cx="85" cy="39" r="3" fill="#DC2626"/>
-                        <circle cx="95" cy="39" r="3" fill="#DC2626"/>
-                    </g>
-                </g>
+                    <path d="M250 117L245 130H255L250 117Z" fill="#160D11"/>
+                    <path d="M236 127C240 134 246 136 250 139M264 127C260 134 254 136 250 139" stroke="#36222B" stroke-width="1.8" stroke-linecap="round"/>
 
-                <g class="stage-bat-three">
-                    <g transform="translate(20, 235) scale(0.45)">
-                        <g class="flap-left">
-                            <path d="M74 44C52 16 24 8 2 22C18 30 26 42 22 56C38 46 52 50 58 62C66 52 70 48 74 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2.4"/>
-                        </g>
-                        <g class="flap-right">
-                            <path d="M106 44C128 16 156 8 178 22C162 30 154 42 158 56C142 46 128 50 122 62C114 52 110 48 106 48Z" fill="#140D12" stroke="#D4AF37" stroke-width="2.4"/>
-                        </g>
-                        <circle cx="90" cy="40" r="14" fill="#EFE8EB" stroke="#1A1015" stroke-width="2.4"/>
-                        <circle cx="85" cy="39" r="3" fill="#DC2626"/>
-                        <circle cx="95" cy="39" r="3" fill="#DC2626"/>
-                    </g>
+                    <path d="M236 150H264V168H236V150Z" fill="#DCD0D5" stroke="#1A1015" stroke-width="2"/>
+                    <path d="M236 158H264" stroke="#1A1015" stroke-width="1.8"/>
+                    <path d="M241 150V168M247 150V168M253 150V168M259 150V168" stroke="#1A1015" stroke-width="1.5" stroke-linecap="round"/>
                 </g>
             </svg>
         </div>
@@ -1605,88 +1553,21 @@ svg { display: block; }
                 <p>
                     Apabila Anda melakukan pembayaran melalui rekening <strong>Bank (Mobile Banking / ATM)</strong>,
                     mohon gunakan metode <button type="button" id="noticeQris">QRIS</button> dan
-                    <strong>jangan melakukan transfer ke nomor E-Wallet</strong> karena terdapat potongan biaya administrasi pada E-Wallet.
+                    <strong>pastikan nominal sudah sesuai</strong>.
                 </p>
             </div>
         </div>
 
         <div class="section-head">
             <div>
-                <h3>Dompet Digital (Sesama E-Wallet)</h3>
-                <p>Nomor disembunyikan demi keamanan. Klik tombol untuk langsung menyalin nomor.</p>
+                <h3>Metode Pembayaran (QRIS)</h3>
+                <p>Pindai menggunakan aplikasi bank atau e-wallet apa pun.</p>
             </div>
-            <div class="section-tag">Instan</div>
+            <div class="section-tag">Instant QRIS</div>
         </div>
 
-        <div class="method-list">
-
-            <div class="method-card">
-                <div class="method-logo dana" aria-label="DANA">
-                    <svg viewBox="0 0 92 28" width="100%" height="100%" fill="none">
-                        <path d="M6 14C10 9 16 19 20 14" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                        <text x="26" y="19" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="16">DANA</text>
-                    </svg>
-                </div>
-                <div class="method-detail">
-                    <strong>DANA</strong>
-                    <p>Salin nomor pembayaran</p>
-                </div>
-                <button class="copy-button" data-wallet="dana" type="button" disabled>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="8" y="8" width="13" height="13" rx="2"/>
-                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
-                    </svg>
-                    <span>Salin Nomor</span>
-                </button>
-            </div>
-
-            <div class="method-card">
-                <div class="method-logo gopay" aria-label="GoPay">
-                    <svg viewBox="0 0 96 28" width="100%" height="100%" fill="none">
-                        <rect x="4" y="6" width="18" height="15" rx="3.5" stroke="white" stroke-width="2.4"/>
-                        <path d="M16 13.5H20" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
-                        <text x="27" y="19" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="15.5">gopay</text>
-                    </svg>
-                </div>
-                <div class="method-detail">
-                    <strong>GoPay</strong>
-                    <p>Salin nomor pembayaran</p>
-                </div>
-                <button class="copy-button" data-wallet="gopay" type="button" disabled>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="8" y="8" width="13" height="13" rx="2"/>
-                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
-                    </svg>
-                    <span>Salin Nomor</span>
-                </button>
-            </div>
-
-            <div class="method-card">
-                <div class="method-logo shopeepay" aria-label="ShopeePay">
-                    <svg viewBox="0 0 108 28" width="100%" height="100%" fill="none">
-                        <path d="M9 9V7.5C9 5.5 10.6 4 12.5 4C14.4 4 16 5.5 16 7.5V9" stroke="white" stroke-width="2"/>
-                        <rect x="5" y="9" width="15" height="14" rx="2.5" stroke="white" stroke-width="2"/>
-                        <text x="24" y="18.5" fill="white" font-family="Poppins,sans-serif" font-weight="800" font-size="12.5">ShopeePay</text>
-                    </svg>
-                </div>
-                <div class="method-detail">
-                    <strong>ShopeePay</strong>
-                    <p>Salin nomor pembayaran</p>
-                </div>
-                <button class="copy-button" data-wallet="shopeepay" type="button" disabled>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="8" y="8" width="13" height="13" rx="2"/>
-                        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
-                    </svg>
-                    <span>Salin Nomor</span>
-                </button>
-            </div>
-
-        </div>
-
-        <section class="qris-card" id="qrisCard">
-
-            <button class="qris-trigger" id="qrisTrigger" type="button" aria-expanded="false" aria-controls="qrisContent">
+        <section class="qris-card active" id="qrisCard">
+            <div class="qris-trigger" style="cursor: default;">
                 <div class="method-logo qris" aria-label="QRIS">
                     <svg viewBox="0 0 84 28" width="100%" height="100%" fill="none">
                         <path d="M5 9V4H10M22 4H27V9M27 19V24H22M10 24H5V19" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round"/>
@@ -1695,19 +1576,14 @@ svg { display: block; }
                 </div>
                 <div class="method-detail">
                     <strong>
-                        QRIS & Kalkulator
+                        QRIS & Kalkulator Pembayaran
                         <span class="recommended">Semua Bank & E-Wallet</span>
                     </strong>
-                    <p>Klik untuk membuka kode QRIS & kalkulator biaya</p>
+                    <p>Satu kode QR untuk semua jenis pembayaran</p>
                 </div>
-                <div class="chevron-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                </div>
-            </button>
+            </div>
 
-            <div class="qris-content" id="qrisContent">
+            <div class="qris-content open" id="qrisContent">
                 <div class="qris-content-inner">
                     <div class="qris-body">
 
@@ -1981,44 +1857,6 @@ async function copyText(value) {
     return success;
 }
 
-async function copyWallet(key, button) {
-    if (!config) return;
-
-    const value = cleanPhone(config[key]);
-
-    if (!value) {
-        showToast("Nomor pembayaran belum tersedia.");
-        return;
-    }
-
-    const success = await copyText(value);
-
-    if (!success) {
-        showToast("Gagal menyalin nomor pembayaran.");
-        return;
-    }
-
-    const label = button.querySelector("span");
-
-    label.textContent = "Tersalin!";
-    button.classList.add("success");
-
-    clearTimeout(button.resetTimer);
-
-    button.resetTimer = setTimeout(() => {
-        label.textContent = "Salin Nomor";
-        button.classList.remove("success");
-    }, 1800);
-
-    const provider = {
-        dana: "DANA",
-        gopay: "GoPay",
-        shopeepay: "ShopeePay"
-    }[key] || "E-Wallet";
-
-    showToast("Nomor " + provider + " berhasil disalin.");
-}
-
 function safeImageUrl(value) {
     if (!value || typeof value !== "string") return "";
 
@@ -2083,10 +1921,6 @@ function renderConfig() {
     $("feeThresholdText").textContent = rupiah(config.batasBiaya);
     $("feePercentText").textContent = config.persenBiaya + "%";
 
-    document.querySelectorAll("[data-wallet]").forEach(button => {
-        button.disabled = !cleanPhone(config[button.dataset.wallet]);
-    });
-
     $("confirmButton").disabled = !cleanPhone(config.whatsapp);
 
     renderQris();
@@ -2110,9 +1944,6 @@ async function loadData() {
             namaToko: String(data.namaToko || "DND Store"),
             namaPenerima: String(data.namaPenerima || ""),
             deskripsi: String(data.deskripsi || ""),
-            dana: String(data.dana || ""),
-            gopay: String(data.gopay || ""),
-            shopeepay: String(data.shopeepay || ""),
             whatsapp: String(data.whatsapp || ""),
             qrisImage: String(data.qrisImage || ""),
             batasBiaya: Number.isFinite(validThreshold) && validThreshold >= 0
@@ -2130,29 +1961,6 @@ async function loadData() {
         setQrisUnavailable();
         showToast("Gagal memuat informasi pembayaran.");
     }
-}
-
-function toggleQris(forceOpen = null) {
-    const card = $("qrisCard");
-
-    const isOpen = forceOpen === null
-        ? !card.classList.contains("active")
-        : forceOpen;
-
-    card.classList.toggle("active", isOpen);
-    $("qrisTrigger").setAttribute("aria-expanded", String(isOpen));
-    $("qrisContent").inert = !isOpen;
-}
-
-function openQris() {
-    toggleQris(true);
-
-    setTimeout(() => {
-        $("qrisCard").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }, 100);
 }
 
 function updateCalculation(amount) {
@@ -2288,12 +2096,6 @@ function confirmPayment() {
 $("openPaymentBtn").addEventListener("click", showPaymentPage);
 $("backHomeBtn").addEventListener("click", showWelcomePage);
 
-document.querySelectorAll("[data-wallet]").forEach(button => {
-    button.addEventListener("click", () => {
-        copyWallet(button.dataset.wallet, button);
-    });
-});
-
 document.querySelectorAll("[data-amount]").forEach(button => {
     button.addEventListener("click", () => {
         const amount = Number(button.dataset.amount);
@@ -2306,8 +2108,10 @@ $("amountInput").addEventListener("input", event => {
     handleAmountInput(event.target.value);
 });
 
-$("qrisTrigger").addEventListener("click", () => toggleQris());
-$("noticeQris").addEventListener("click", openQris);
+$("noticeQris").addEventListener("click", () => {
+    $("qrisCard").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
 $("copyTotal").addEventListener("click", copyCalculatedTotal);
 $("zoomQris").addEventListener("click", openQrisModal);
 $("downloadQris").addEventListener("click", downloadQris);
@@ -2325,7 +2129,7 @@ document.addEventListener("keydown", event => {
 });
 
 $("footerYear").textContent = new Date().getFullYear();
-$("qrisContent").inert = true;
+$("qrisContent").inert = false;
 
 createSakuraPetals();
 loadData();
